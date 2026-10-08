@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nddev-device-sync module manifest",
+  "type": "object",
+  "required": ["id", "version", "api_version", "kind", "platforms", "capabilities", "permissions", "dependencies"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "version": { "type": "string", "minLength": 1 },
+    "api_version": { "type": "integer", "minimum": 1 },
+    "kind": { "enum": ["gds", "rds", "tool", "accounts", "integration"] },
+    "platforms": { "type": "array", "items": { "enum": ["macos", "linux", "windows"] }, "minItems": 1, "uniqueItems": true },
+    "capabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "permissions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "dependencies": { "type": "array", "items": { "type": "object", "required": ["id", "minimum_api"], "properties": { "id": { "type": "string" }, "minimum_api": { "type": "integer", "minimum": 1 } }, "additionalProperties": false }, "uniqueItems": true }
+  },
+  "additionalProperties": false
+}
+

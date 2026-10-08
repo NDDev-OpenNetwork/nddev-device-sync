@@ -1,0 +1,26 @@
+[package]
+name = "nddev-device-sync-desktop"
+version = "0.1.0"
+description = "NDDev cross-platform device control plane"
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[lib]
+name = "nddev_device_sync_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "nddev-device-sync-desktop"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build.workspace = true
+
+[dependencies]
+nddev-device-sync-application.workspace = true
+nddev-device-sync-domain.workspace = true
+serde.workspace = true
+tauri.workspace = true

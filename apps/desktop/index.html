@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NDDev Device Sync</title>
+    <style>
+      :root { color-scheme: light dark; font: 15px system-ui, sans-serif; }
+      body { margin: 0; padding: 2rem; background: #101216; color: #eef2f7; }
+      main { max-width: 760px; margin: auto; }
+      h1 { font-size: 1.65rem; margin-bottom: .25rem; }
+      p { color: #aeb8c4; }
+      #modules { display: grid; gap: .6rem; margin-top: 1.5rem; }
+      article { border: 1px solid #2c3540; border-radius: .6rem; padding: .8rem 1rem; background: #171c22; }
+      code { color: #9fd4ff; }
+      .error { color: #ff9b9b; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>NDDev Device Sync</h1>
+      <p>Rust core · module registry · three-platform shell</p>
+      <section id="modules" aria-live="polite">Loading modules…</section>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
+

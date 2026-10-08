@@ -1,6 +1,6 @@
 [package]
 name = "nddev-device-sync-desktop"
-version = "0.1.0"
+version = "0.0.1"
 description = "NDDev cross-platform device control plane"
 authors.workspace = true
 edition.workspace = true

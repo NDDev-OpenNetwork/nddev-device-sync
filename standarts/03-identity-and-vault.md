@@ -2,8 +2,9 @@
 
 ## Actors
 
-- **User identity** authenticates a person through an approved OAuth2/OIDC
-  provider with PKCE. Provider passwords are never stored by this product.
+- **User identity** authenticates a person through GitHub OAuth with PKCE.
+  GitHub is the only alpha identity provider. Provider passwords are never
+  stored by this product.
 - **Device identity** is a per-installation signing key generated on the
   device. The private key stays in the native keyring or secure platform
   storage.
@@ -48,4 +49,3 @@ secrets are lost, encrypted records are unrecoverable by design.
 Operational retry queues and temporary delivery buffers are bounded transport
 state; they are not backups and must be deleted according to their retention
 policy.
-

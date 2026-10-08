@@ -1,9 +1,16 @@
 # nddev-device-sync
 
+License: GNU AGPL-3.0-only. See [`LICENSE`](LICENSE) and
+[`TRADEMARKS.md`](TRADEMARKS.md).
+
 `nddev-device-sync` is the planned distributed control plane for NDDev devices,
 servers and agent-work tools. It provides one Rust core/server, one Flutter UI
 for desktop and mobile, and explicit adapters for GDS, RDS, sysinfo, clipboard,
 cleaner, updater and server monitoring.
+
+The public implementation is self-hostable. It keeps the NDDev OpenNetwork
+name, attribution and links to [nddev.ai](https://nddev.ai) in the standard
+product surfaces.
 
 The current checkout is a compileable architecture draft rather than a
 finished installer. It establishes boundaries before integrations are added,
@@ -42,6 +49,7 @@ crates/adapters-keyring   macOS Keychain/Linux Secret Service/Windows Credential
 crates/desktop            exploratory smoke-test shell; alpha UI follows standarts/
 apps/                     server, agent and Flutter client targets
 standarts/                normative product and engineering standards
+contracts/module-catalog.json  separate public module repository plan
 docs/architecture.md      historical architecture draft
 docs/security.md          threat model and permission rules
 contracts/                versioned module contract examples
@@ -64,3 +72,11 @@ cargo run -p nddev-device-sync
 4. Add OpenTelemetry, Vector, OpenObserve and Rust alert state.
 5. Add existing-tool adapters and official harness account flows.
 6. Publish signed alpha artifacts for desktop, mobile and server.
+
+## Repository topology
+
+The central repository defines standards and the assembly contract. Runtime
+modules are separate repositories under `NDDev-OpenNetwork` and consume a
+versioned standards release. The future public self-hosting engine is
+`NDDev-OpenNetwork/nddev-device-sync-estate`; a personal estate is deployment
+configuration and is not a second product name.

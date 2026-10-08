@@ -1,4 +1,7 @@
-# nddev-device-sync technology standard (proposal)
+# nddev-device-sync technology standard (historical draft)
+
+The normative standard is now in
+[`../standarts/README.md`](../standarts/README.md).
 
 Status: **proposed, pending product confirmation**.
 
@@ -97,4 +100,3 @@ contract tests.
 - whether the UI ships in English and Russian in v0.1 or starts in English;
 - the exact SQLite migration crate and release signing service;
 - the minimum Windows and Ubuntu versions for the first support matrix.
-

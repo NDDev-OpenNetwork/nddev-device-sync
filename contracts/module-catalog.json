@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "catalog_version": 1,
+  "product": "nddev-device-sync",
+  "license": "AGPL-3.0-only",
+  "organization": "NDDev-OpenNetwork",
+  "channel": "alpha",
+  "modules": [
+    {"id":"core","repository":"nddev-device-sync-core","kind":"shared-core","status":"alpha","platforms":["macos","linux","windows","ios","android"]},
+    {"id":"protocol","repository":"nddev-device-sync-protocol","kind":"contracts","status":"alpha","platforms":["all"]},
+    {"id":"server","repository":"nddev-device-sync-server","kind":"server","status":"planned","platforms":["linux"]},
+    {"id":"agent","repository":"nddev-device-sync-agent","kind":"agent","status":"planned","platforms":["macos","linux","windows"]},
+    {"id":"desktop","repository":"nddev-device-sync-desktop","kind":"flutter-client","status":"planned","platforms":["macos","linux","windows"]},
+    {"id":"mobile","repository":"nddev-device-sync-mobile","kind":"flutter-client","status":"planned","platforms":["ios","android"]},
+    {"id":"observability","repository":"nddev-device-sync-observability","kind":"service","status":"planned","platforms":["linux"]},
+    {"id":"accounts","repository":"nddev-device-sync-accounts","kind":"module","status":"planned","platforms":["all"]},
+    {"id":"gds","repository":"nddev-device-sync-gds","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"rds","repository":"nddev-device-sync-rds","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"sysinfo","repository":"nddev-device-sync-sysinfo","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"clipboard","repository":"nddev-device-sync-clipboard","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"cleaner","repository":"nddev-device-sync-cleaner","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"updater","repository":"nddev-device-sync-updater","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"estate","repository":"nddev-device-sync-estate","kind":"self-hosting-engine","status":"future","platforms":["linux"]},
+    {"id":"design-system","repository":"nddev-opennetwork-design-system","kind":"design-system","status":"alpha","platforms":["all"]}
+  ]
+}

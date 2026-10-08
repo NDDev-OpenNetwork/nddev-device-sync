@@ -2,8 +2,9 @@
 
 ## Local and server runtime
 
-`just` is the canonical command runner. Docker Compose defines the local
-development services and the initial single-server deployment. The same
+`just` is the canonical command runner. Docker Compose is the only alpha
+deployment path for the server stack. Compose defines the local development
+services and the initial single-server deployment. The same
 service names, health endpoints, migrations and environment contract are used
 in both environments.
 
@@ -36,4 +37,3 @@ resource limits. The no-backup/no-recovery policy in
 `03-identity-and-vault.md` applies to these volumes as well. A release rollback
 may restore an earlier image and schema-compatible application version; it does
 not restore deleted data.
-

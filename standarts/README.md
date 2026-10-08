@@ -22,6 +22,8 @@ requires an ADR in `standarts/decisions/` before code is changed.
 8. [Release policy](08-release-policy.md)
 9. [Internationalization and visual system](09-i18n-and-visual-system.md)
 10. [Operations](10-operations.md)
+11. [Repository topology](11-repository-topology.md)
+12. [Product decisions](12-product-decisions.md)
 
 ## Status
 
@@ -29,3 +31,6 @@ The product starts in the `alpha` channel. These documents describe the
 baseline for `v0.0.n-alpha.k`; they are reviewed before the first public
 artifact and again before moving to `beta`.
 
+The public visual token source is
+`NDDev-OpenNetwork/nddev-opennetwork-design-system`, licensed under
+AGPL-3.0-only.

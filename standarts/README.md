@@ -24,6 +24,10 @@ requires an ADR in `standarts/decisions/` before code is changed.
 10. [Operations](10-operations.md)
 11. [Repository topology](11-repository-topology.md)
 12. [Product decisions](12-product-decisions.md)
+13. [Engineering and agent standard](13-engineering-and-agent-standard.md)
+14. [Technology standard](14-technology-standard.md)
+15. [Observability and telemetry standard](15-observability-and-telemetry-standard.md)
+16. [Development workflow and consistency](16-development-workflow.md)
 
 ## Status
 

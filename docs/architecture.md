@@ -3,7 +3,9 @@
 The normative architecture is now in
 [`../standarts/02-architecture.md`](../standarts/02-architecture.md). This
 file records the earlier Tauri-oriented exploration and is retained as design
-history until the alpha Flutter shell replaces it.
+history. The current module boundaries are defined in
+[`../standarts/02-architecture.md`](../standarts/02-architecture.md) and the
+public module catalog.
 
 ## Runtime shape
 

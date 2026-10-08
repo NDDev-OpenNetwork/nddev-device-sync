@@ -8,7 +8,8 @@ evidence.
 ## Architecture rules
 
 - Keep domain and application crates independent of operating systems and UI.
-- Put OS integration behind ports and small adapters under `crates/`.
+- Put OS integration behind ports and small adapters in the module repository
+  that owns the integration.
 - Modules are compiled-in and manifest-driven in the first release. Do not add
   native dynamic loading until a signed, versioned plugin ABI exists.
 - Account secrets belong in the native credential store; the state database may
@@ -22,6 +23,5 @@ evidence.
 
 ## Verification
 
-Run `cargo fmt --all -- --check`, `cargo test --workspace`, and
-`cargo clippy --workspace --all-targets -- -D warnings` before review.
-
+Run `just standards-check` and validate the module catalog before review.
+Runtime repositories own their Rust or Flutter test suites.

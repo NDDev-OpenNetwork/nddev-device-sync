@@ -12,9 +12,9 @@ The public implementation is self-hostable. It keeps the NDDev OpenNetwork
 name, attribution and links to [nddev.ai](https://nddev.ai) in the standard
 product surfaces.
 
-The current checkout is a compileable architecture draft rather than a
-finished installer. It establishes boundaries before integrations are added,
-so the desktop UI does not become a second owner of every tool's state.
+The central repository is a standards and assembly repository. Runtime code is
+implemented in the separate module repositories listed by
+[`contracts/module-catalog.json`](contracts/module-catalog.json).
 
 The normative technology and product decisions are recorded in
 [`standarts/README.md`](standarts/README.md). The earlier files under `docs/`
@@ -39,37 +39,27 @@ and the Tauri shell are exploratory drafts; the Flutter-first standard in
   own data, policies and update mechanisms. This app coordinates them through
   narrow adapters and never copies their private state.
 
-## Workspace
+## Central repository contents
 
 ```text
-crates/domain             pure entities, invariants and module graph
-crates/application        use cases and ports
-crates/adapters-memory    deterministic test adapters
-crates/adapters-keyring   macOS Keychain/Linux Secret Service/Windows Credential Manager
-crates/desktop            exploratory smoke-test shell; alpha UI follows standarts/
-apps/                     server, agent and Flutter client targets
 standarts/                normative product and engineering standards
 contracts/module-catalog.json  separate public module repository plan
-docs/architecture.md      historical architecture draft
-docs/security.md          threat model and permission rules
-contracts/                versioned module contract examples
+docs/                      historical design notes
+justfile                   standards validation entrypoint
 ```
 
 ## Verification
 
 ```sh
-cargo fmt --all -- --check
-cargo test --workspace
-cargo clippy --workspace --all-targets -- -D warnings
-cargo run -p nddev-device-sync
+just standards-check
 ```
 
 ## Roadmap after the alpha standard is confirmed
 
-1. Create the Flutter desktop/mobile shell and the Rust local bridge.
-2. Add SQLite and PostgreSQL migrations with the offline outbox/inbox protocol.
-3. Add device enrollment, vault records and server-agent health.
-4. Add OpenTelemetry, Vector, OpenObserve and Rust alert state.
+1. Build the protocol and core alpha modules from their separate repositories.
+2. Create the Flutter desktop/mobile clients and Rust local bridge.
+3. Create the sync server, agent and observability service repositories.
+4. Add SQLite/PostgreSQL migrations, device enrollment and vault records.
 5. Add existing-tool adapters and official harness account flows.
 6. Publish signed alpha artifacts for desktop, mobile and server.
 

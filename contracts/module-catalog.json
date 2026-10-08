@@ -8,7 +8,7 @@
   "modules": [
     {"id":"core","repository":"nddev-device-sync-core","kind":"shared-core","status":"alpha","platforms":["macos","linux","windows","ios","android"]},
     {"id":"protocol","repository":"nddev-device-sync-protocol","kind":"contracts","status":"alpha","platforms":["all"]},
-    {"id":"server","repository":"nddev-device-sync-server","kind":"server","status":"planned","platforms":["linux"]},
+    {"id":"server","repository":"nddev-device-sync-server","kind":"server","status":"alpha","release":"server-v0.0.1-alpha.4","platforms":["linux"]},
     {"id":"agent","repository":"nddev-device-sync-agent","kind":"agent","status":"planned","platforms":["macos","linux","windows"]},
     {"id":"desktop","repository":"nddev-device-sync-desktop","kind":"flutter-client","status":"planned","platforms":["macos","linux","windows"]},
     {"id":"mobile","repository":"nddev-device-sync-mobile","kind":"flutter-client","status":"planned","platforms":["ios","android"]},

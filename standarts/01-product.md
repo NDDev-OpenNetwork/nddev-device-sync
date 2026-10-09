@@ -30,3 +30,7 @@ The first active application contains an owner-selected set of working modules,
 real user workflows and observable failure handling. The catalog is a map of
 boundaries, not a requirement to implement all modules at once. Health endpoints,
 empty screens and module descriptors alone do not constitute that application.
+The accepted scope includes all seven tool/account modules listed above, with
+Linux/macOS/Windows desktop and Android/iOS mobile clients. Capability and
+execution-host boundaries remain explicit; this scope is delivered in verified
+increments rather than represented by nonfunctional placeholders.

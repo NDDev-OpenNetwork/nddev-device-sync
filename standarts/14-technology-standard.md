@@ -14,7 +14,7 @@ repository's lockfile:
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |
 | Server state | PostgreSQL 18.x through SQLx with checked migrations |
 | Secrets | Native keyring plus end-to-end encrypted vault records |
-| Identity | Passwordless email OTP; separate per-device signing keys |
+| Identity | Email OTP and GitHub OAuth PKCE; separate per-device signing keys |
 | Email delivery | Server-owned transactional email adapter; provider-neutral port |
 | Transport | HTTPS/WebSocket with rustls and W3C trace context |
 | Observability | `tracing`, OpenTelemetry, Vector and OpenObserve |

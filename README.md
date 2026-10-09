@@ -15,7 +15,8 @@ modules are implemented or require building all of them for the first alpha.
 The [engineering contract](standarts/13-engineering-and-agent-standard.md)
 governs autonomous delivery, minimal code and state, real verification and
 scope control. [ADR 0002](standarts/decisions/0002-autonomous-engineering-and-email-identity.md)
-records the current passwordless email-OTP identity decision. Existing module
+records the engineering baseline; [ADR 0003](standarts/decisions/0003-dual-sign-in-and-platform-scope.md)
+defines email OTP and GitHub sign-in for one account. Existing module
 locks and published alpha tags keep their original contracts until consumers
 adopt a subsequent standards release.
 

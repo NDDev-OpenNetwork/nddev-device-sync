@@ -14,7 +14,8 @@ repository's lockfile:
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |
 | Server state | PostgreSQL 18.x through SQLx with checked migrations |
 | Secrets | Native keyring plus end-to-end encrypted vault records |
-| Identity | GitHub OAuth with PKCE; per-device signing keys |
+| Identity | Passwordless email OTP; separate per-device signing keys |
+| Email delivery | Server-owned transactional email adapter; provider-neutral port |
 | Transport | HTTPS/WebSocket with rustls and W3C trace context |
 | Observability | `tracing`, OpenTelemetry, Vector and OpenObserve |
 | Infrastructure | Docker Compose only for alpha; `just` as command runner |
@@ -29,4 +30,3 @@ ADR when a measured requirement justifies the added surface.
 Dependencies are added only with a purpose, owner, license decision, update
 path and removal condition. A package must not be added merely to wrap one
 standard-library operation.
-

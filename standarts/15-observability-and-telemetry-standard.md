@@ -1,12 +1,12 @@
 # Observability and telemetry standard
 
-Observability is part of the product contract. Every Rust process, Flutter
-client, agent, server module, migration runner and release workflow emits
-structured, correlated and redacted telemetry.
+Every Rust process, Flutter client, agent, migration runner and release workflow
+emits structured, correlated and redacted events. Observability is part of each
+implemented behavior, not a later substitute for error handling.
 
-## Event envelope
+## Canonical envelope
 
-Each log, metric or trace event includes the applicable fields:
+Use applicable fields with stable names and bounded cardinality:
 
 ```text
 timestamp
@@ -31,42 +31,55 @@ duration_ms
 outcome
 ```
 
-Build and test telemetry additionally records `build_id`, toolchain, target,
-test suite, migration version and artifact digest. It never records source
-secrets or full environment values.
+Common process/build metadata is attached centrally, including startup,
+shutdown, migration, TLS reload and process failure, not only HTTP spans.
+W3C trace context crosses service/module boundaries. Build/test evidence adds
+build ID, toolchain, target, suite, schema/migration version and artifact digest.
+Metric labels never use unbounded IDs, user content or raw URLs.
 
-## Pipeline
+## Modes
+
+- **Normal** is the default: lifecycle, security/audit, relevant state changes,
+  warnings and errors; operational metrics, correlated traces and alerts remain
+  available. Routine high-volume success events may be sampled.
+- **Debug** is explicitly enabled for a bounded scope and duration. It adds
+  diagnostic spans and structured detail with finite volume/retention. Expiry
+  returns to normal; enable/disable transitions are auditable.
+- Both modes use the same schema and redaction boundary. Debug never exposes
+  OTPs, passwords, tokens, cookies, private keys, authorization headers, raw
+  prompts, full command lines, environment values or secret-bearing URLs.
+  Do not dump request/response bodies as a general debug mechanism.
+- A self-hosted operator may disable telemetry export. Required local failure,
+  security and health signals remain available. Report configured mode, actual
+  exporter availability and delivery freshness separately; an enabled flag is
+  not evidence of a functioning pipeline.
+
+## Delivery and alerts
 
 ```text
-Flutter/Rust process → local Rust SDK/bridge
-                    → nddev-observability
-                    → Vector
-                    → OpenObserve
+Flutter/Rust process -> nddev-observability -> Vector -> OpenObserve
 ```
 
-Vector also collects journald and container logs where a local collector is
-needed. OpenObserve credentials exist only in the central telemetry pipeline.
-Self-hosted operators may disable telemetry; disabled state, dropped events and
-queue pressure remain visible locally.
+Redaction happens before events leave a process. Reuse one owned event/redaction
+contract; collectors may apply additional checks. Only the central pipeline
+holds OpenObserve credentials. Vector may collect journald/container logs.
 
-## Required behavior
+Queues, batches, retry count/backoff, storage retention and disk use are bounded.
+Failures are visible locally. Errors/audit events are not intentionally sampled;
+resource exhaustion or exporter failure must surface lost-event counts and
+degraded state rather than silently claim complete delivery.
 
-- Errors and state transitions are always logged.
-- Normal high-volume events are sampled only after error and audit coverage is
-  preserved.
-- Every retry has a count, backoff, terminal outcome and trace correlation.
-- Every service exposes liveness, readiness and dependency health.
-- Every alert has deduplication, acknowledgement, silence and resolution
-  state.
-- Redaction happens before an event leaves the process.
-- Tokens, cookies, private keys, Authorization headers, raw prompts, full
-  command lines and secret-bearing URLs are prohibited telemetry values.
-- Telemetry queues and buffers are bounded, observable and not backups.
+Every service has liveness, readiness and dependency health. An alert has an
+owner, severity, deduplication, acknowledgement, silence and resolution state,
+with a finite incident lifecycle. Verify notification delivery when a channel
+is configured; a created incident is not evidence of a delivered notification.
+Debug mode and disabled export must not mask operational failure.
 
-## Quality signals
+## Acceptance signals
 
-The alpha dashboards must show sync latency, operation conflict rate, outbox
-age, agent heartbeat age, API error rate, database health, migration version,
-telemetry delivery age, dropped event count and release health. A green
-dashboard without fresh telemetry is a degraded state, not success.
-
+For implemented flows observe latency/errors, sync conflict rate and outbox age,
+device/agent heartbeat age, database and migration health, resource pressure,
+telemetry delivery age/drops and release health. A dashboard with stale or
+missing telemetry is degraded. Acceptance follows an actual correlated event
+into OpenObserve and exercises an alert through resolution; mock events do not
+prove the application path.

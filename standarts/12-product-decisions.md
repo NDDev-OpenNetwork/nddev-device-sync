@@ -1,20 +1,20 @@
 # Product decisions
 
 - Public source and self-hosting are first-class requirements.
-- Code, server, modules and OpenNetwork design tokens use AGPL-3.0-only.
-- The NDDev OpenNetwork name, attribution and `https://nddev.ai` link remain in
-  standard product surfaces.
-- GitHub is the first and only alpha user identity provider.
-- Docker Compose is the alpha deployment path.
-- The first scale target is one person or one small team per self-hosted
-  instance. Multi-tenancy and team administration are designed into the
-  contracts but implemented later.
-- Backup and recovery are disabled until the owner explicitly enables a future
-  module. This remains true after the first release.
-- Telemetry is enabled by default and can be disabled by the self-hosted
-  operator. Disabled telemetry must be visible in health and settings.
-- Desktop, mobile and server have separate release versions and artifacts.
-- Existing repositories are replaced by the new module repositories only after
-  migration, compatibility checks and release receipts. Old repositories are
-  archived afterward.
-
+- Rust, Flutter and public design tokens use AGPL-3.0-only. NDDev OpenNetwork
+  attribution and the https://nddev.ai link remain in product surfaces.
+- Passwordless email OTP is the alpha product sign-in method. One bootstrap
+  owner is configured privately; device identity and E2EE vault access remain
+  separate. See [identity](03-identity-and-vault.md) and
+  [ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md).
+- Docker Compose is the alpha deployment path. The first scale target is one
+  person or small team; future ownership boundaries are explicit, while team
+  administration remains deferred.
+- Telemetry export is enabled by default and operator-controlled. Normal/debug
+  modes share the same redaction guarantees and observable delivery state.
+- Desktop, mobile and server have separate versioned artifacts in the coordinated
+  alpha -> beta -> release train.
+- Existing tools retain authority until approved migrations pass compatibility
+  checks. Their repositories and private state are not disposable scaffolding.
+- Backup/recovery remains disabled, including after the first release, until an
+  explicit future product decision.

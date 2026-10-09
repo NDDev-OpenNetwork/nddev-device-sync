@@ -10,6 +10,12 @@ release channels, observability and the recovery policy. An implementation may
 add detail, but it must not silently weaken a rule here. Any change to a rule
 requires an ADR in `standarts/decisions/` before code is changed.
 
+Keep one canonical statement of each rule. Implementation details belong in
+code, schemas and executable checks; historical alternatives stay in Git history.
+The current engineering and identity baseline is recorded in
+[ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md).
+An edit here does not change the meaning of a module's existing release lock.
+
 ## Normative documents
 
 1. [Product boundary](01-product.md)

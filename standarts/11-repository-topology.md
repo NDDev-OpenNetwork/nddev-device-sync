@@ -1,32 +1,24 @@
 # Repository topology
 
-The public OpenNetwork organization owns generic implementation repositories.
-The central `nddev-device-sync` repository owns this standards directory,
-assembly metadata and the module catalog. Each module repository has its own
-release tag, lockfile, tests and `standarts.lock`.
+The central repository owns standards, assembly metadata and the module catalog.
+Each runtime module owns its implementation, tests, dependency locks and release
+boundary. The future public self-hosting engine is `nddev-device-sync-estate`;
+a personal deployment is private configuration, not another product.
 
-The future `nddev-device-sync-estate` repository is the public self-hosting
-engine. A personal or team deployment is configuration and runtime state for
-that engine; it does not become a separate product named `nddev-estate`.
+Create a module repository when an accepted behavior needs that boundary.
+Catalog reservations do not authorize empty repositories or inactive services.
 
-The first alpha implementation wave creates repositories only when their
-module has code and a meaningful release boundary. The catalog reserves the
-correct names now without creating empty repositories.
+A module contains AGENTS.md, LICENSE, a short README, standarts.lock, module.yaml,
+a justfile and its applicable tests. Runtime dependency locks are committed and
+checked in CI. A schema-only repository instead pins its validation/generation
+tooling; it does not invent a Cargo workspace just to have a Cargo.lock.
 
-Every module repository must contain:
+Repository metadata declares packaging and ownership. Runtime descriptors
+declare API version, capabilities, permissions, platforms and dependencies.
+Their relationship is explicit and validated, with no conflicting handwritten
+projections. Modules consume immutable source releases, never private estate
+files or another repository's mutable branch.
 
-```text
-AGENTS.md
-LICENSE
-README.md
-standarts.lock
-module.yaml
-Cargo.lock or pubspec.lock
-justfile
-tests/
-```
-
-The module manifest declares its repository, API version, capabilities,
-platforms, dependencies and standards release. A module must not depend on
-private estate files or on a mutable branch of another repository.
-
+Generated clients and design-token projections record their canonical source
+and regenerate without manual edits. The release/check path verifies drift.
+Keep operational addresses, accounts, secrets and evidence outside public source.

@@ -1,0 +1,45 @@
+schema_version: 1
+repository:
+  id: "repo_01M4HDXFRHK3Y2M2QFYDV7PC1M"
+  display_name: "nddev-device-sync"
+  roles:
+    - "project"
+  lifecycle: "active"
+provider:
+  type: "github"
+  installation: "installation:github-opennetwork"
+  repository_id: 1411020088
+  owner: "NDDev-OpenNetwork"
+  name: "nddev-device-sync"
+classification:
+  portfolios:
+    - "portfolio:nddev-opennetwork"
+  visibility_contract: "public"
+  data_classification: "public"
+product:
+  purpose: "Central AGPL-3.0-only standards and assembly repository for the NDDev OpenNetwork device sync alpha train; owns shared standards pinned by module repositories through standarts.lock."
+  entrypoints:
+    - change: "module identity and version"
+      path: "module.yaml"
+    - change: "what this repository is and may do"
+      path: "README.md"
+policy:
+  profiles:
+    - "repository-default"
+    - "opennetwork-default"
+  rollout_ring: "standard"
+git:
+  default_branch: "main"
+  integration: "pull-request"
+  branch_model: "task-branches"
+  handoff_pr: "preferred"
+  cleanup: "merged-only"
+agent:
+  context_profile: "project-default"
+  generated_agents: false
+  serena:
+    enabled: true
+    provenance_required: true
+release:
+  mode: "version-tag"
+  tag_style: "v-semver"

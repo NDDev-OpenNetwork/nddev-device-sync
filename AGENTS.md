@@ -1,27 +1,32 @@
 # nddev-device-sync working contract
 
-This repository contains the public cross-platform application and generic
-module contracts. It must never contain real account tokens, GitHub
-organization data, private estate topology, machine inventory, or runtime
-evidence.
+This public repository owns standards and generic assembly contracts.
+Never add real credentials, owner addresses, private organization policy,
+estate topology, machine inventory or runtime evidence.
 
-## Architecture rules
+Read the [engineering contract](standarts/13-engineering-and-agent-standard.md),
+[development workflow](standarts/16-development-workflow.md), current Git state
+and the owning module's AGENTS.md, standarts.lock and module.yaml before work.
+The owner defines outcomes and trust boundaries; the agent completes authorized
+implementation, verification and delivery without repeatedly asking about
+routine engineering choices. Preserve unrelated dirty work and live services.
 
-- Keep domain and application crates independent of operating systems and UI.
-- Put OS integration behind ports and small adapters in the module repository
-  that owns the integration.
-- Modules are compiled-in and manifest-driven in the first release. Do not add
-  native dynamic loading until a signed, versioned plugin ABI exists.
-- Account secrets belong in the native credential store; the state database may
-  contain only redacted metadata and references.
-- A harness adapter must declare official account-switch support. The account
-  module must refuse switching when that capability is absent.
-- Existing GDS, RDS, sysinfo, clipboard, cleaner, and updater tools remain
-  owners of their own state and policies. This application orchestrates them
-  through explicit adapters; it does not copy their databases or bypass their
-  safety boundaries.
+## Boundaries
+
+- Domain/application stay independent of OS, UI and concrete I/O.
+- Native credentials and E2EE keys remain outside metadata stores and telemetry.
+- Product email-OTP identity is separate from device identity, vault decryption
+  and third-party harness accounts. Read the locked identity contract.
+- Modules are compiled-in and manifest-driven; planned entries are not working
+  adapters. Add only code used by an accepted behavior.
+- Existing GDS, RDS and system tools own their state and safety policies.
+  Use explicit adapters; do not copy their databases or bypass their controls.
+- Harness account switching requires declared official provider support.
+- Follow the approved branch/PR workflow. No implicit releases, deployment,
+  credential changes, backup/recovery or unrelated cleanup.
 
 ## Verification
 
-Run `just standards-check` and validate the module catalog before review.
-Runtime repositories own their Rust or Flutter test suites.
+Run `just standards-check` and `just catalog-check` before review.
+These are structural checks only. Runtime repositories own behavioral tests;
+report exactly which code, dependencies and platforms were exercised.

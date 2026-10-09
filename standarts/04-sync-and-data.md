@@ -15,10 +15,21 @@ payload schema version and idempotency key. The server assigns a monotonic
 `server_seq`. Clients persist an outbox before acknowledging a local mutation,
 then advance an inbox cursor only after applying a verified server operation.
 
+The idempotency scope, request fingerprint and retention are explicit. Reusing a
+key with a different request is rejected. Entity state, revision, operation and
+original result commit atomically. Concurrent duplicates return that result.
+Sequence/cursor semantics must not skip an operation that commits later; a
+database sequence allocation alone does not guarantee commit order. Expired
+history requires an explicit fresh-state synchronization path, never silent loss.
+
 Retries are bounded and use exponential backoff. Replaying the same operation
 is safe and returns the original result. Conflicts create an explicit conflict
 record containing both revisions and a resolution state; silent last-write-wins
 is not used for credentials, devices, permissions or release policy.
+
+Tenant/user ownership comes from authenticated server context and is checked
+for every entity and cursor. Offline clients expose pending/conflicted state
+and freshness; they cannot claim immediate global consistency while disconnected.
 
 ## Data classes
 
@@ -32,4 +43,3 @@ is not used for credentials, devices, permissions or release policy.
 Each class has a schema version, owner, retention policy and redaction rules.
 PostgreSQL migrations are forward-reviewed and exercised from an empty
 database in CI.
-

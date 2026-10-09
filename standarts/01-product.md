@@ -26,3 +26,7 @@ metadata, module state, alert state and the encrypted vault protocol. It does
 not become a general-purpose remote shell, a replacement for Git, or a second
 package manager.
 
+The first active application contains an owner-selected set of working modules,
+real user workflows and observable failure handling. The catalog is a map of
+boundaries, not a requirement to implement all modules at once. Health endpoints,
+empty screens and module descriptors alone do not constitute that application.

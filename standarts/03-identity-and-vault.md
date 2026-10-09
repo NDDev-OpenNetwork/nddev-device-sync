@@ -1,51 +1,67 @@
 # Identity, authorization and vault
 
-## Actors
+## Product identity
 
-- **User identity** authenticates a person through GitHub OAuth with PKCE.
-  GitHub is the only alpha identity provider. Provider passwords are never
-  stored by this product.
-- **Device identity** is a per-installation signing key generated on the
-  device. The private key stays in the native keyring or secure platform
-  storage.
-- **Server identity** is a registered device/server record with a public key,
-  capabilities, owner, status and last heartbeat.
-- **Service identity** is used by Vector, OpenObserve integrations and server
-  agents. Service credentials are separate from user and device credentials.
+NDS alpha sign-in uses a one-time code delivered to email. There are no passwords,
+GitHub sign-in alternative or hidden test-login paths. GitHub remains a tool
+integration. This decision supersedes the previous GitHub-only identity baseline
+through [ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md).
 
-## Enrollment
+An operator privately configures one bootstrap owner address. No public
+registration or first-visitor ownership claim exists. The owner has a stable
+internal user ID, independent of the email address; identity comparisons follow
+one explicit normalization rule. Real addresses and provider credentials never
+belong in public source, fixtures or manifests.
 
-1. A user authenticates to the control server.
-2. The client generates a device key pair locally.
-3. The server issues a short-lived enrollment challenge.
-4. The device proves possession of the private key.
-5. The server stores only the public key and device metadata.
-6. The user can revoke or rotate the device at any time.
+OTP challenges use a cryptographically secure generator, finite lifetime,
+bounded attempts, resend limits and bounded storage. A resend invalidates the
+previous code. Successful verification atomically consumes the challenge;
+concurrent replay must not create another session. Persist a protected verifier,
+not a plaintext code or an easily brute-forced unkeyed hash of a short code.
+Responses must not reveal whether an address is permitted. Enforce both subject
+and source abuse limits without unbounded rate-limit state.
 
-Server access is represented by an endpoint plus a device enrollment key or
-mutual TLS identity. The OpenObserve ingestion token is a separate secret and
-is held only by the central telemetry pipeline.
+The server sends codes through a narrow email-delivery adapter. Delivery
+credentials belong to the operator's secret store. Provider acceptance is not
+proof of mailbox delivery. Sessions have explicit expiry, revocation and
+authorization scope. Email possession authenticates the account; it does not
+prove possession of a device key or grant vault decryption.
+Email OTP trusts mailbox control; it is not phishing-resistant multifactor
+authentication. Delivery and authentication secrets never become log fields.
+
+## Device and service identities
+
+A per-installation signing key is generated on the device; the private key
+stays in native secure storage. After user authentication, a short-lived
+enrollment challenge and proof-of-possession bind the public key and device
+metadata to the authenticated owner. Revocation and explicit key-rotation
+transitions are enforced by the server and preserve authorization boundaries.
+Server records include their public identity, capabilities and heartbeat.
+
+Service identities for agents, email delivery and telemetry are separate from
+user/device credentials. Vector/OpenObserve credentials remain in the central
+telemetry pipeline. Authorization is checked at the owning use case and storage
+boundary, not inferred from a client-supplied tenant or user ID.
 
 ## Vault
 
-The vault stores harness tokens, SSH credentials, API keys and other secret
-material as end-to-end encrypted records. The server stores ciphertext,
-metadata and device-wrapped key material; it cannot read plaintext secrets.
-Each record has an owner, purpose, scope, creation time, rotation state and
-revocation state.
+Harness tokens, SSH credentials and API keys are E2EE records. The server stores
+ciphertext, metadata and device-wrapped key material; it cannot read plaintext.
+Each record has an owner, purpose, scope and lifecycle. Native credential stores
+hold local secrets; metadata stores and UI events hold references or redacted
+metadata, never plaintext secret bytes. Public DTOs and logs cannot expose
+resolved secrets. OTP verifiers and session records follow the separate
+authentication contract, not the vault encryption model.
 
-Credentials are never written to SQLite metadata, logs, telemetry, generated
-reports, Git repositories or UI event payloads. Access is explicit, scoped and
-audited. Account switching is exposed only when the harness adapter declares
-an official switching mechanism.
+A new vault creates keys locally. An additional device receives existing
+vault key material wrapped by an already-authorized device. Email sign-in alone
+cannot reconstruct or reset these keys. No server escrow or password fallback
+is introduced. Account switching uses only declared official harness support.
 
 ## Recovery policy
 
-The product deliberately creates and retains **no backups and no recovery
-copies** for the vault, device keys, server database, local state or generated
-evidence. This is a product standard. If all authorized device keys and local
-secrets are lost, encrypted records are unrecoverable by design.
-
-Operational retry queues and temporary delivery buffers are bounded transport
-state; they are not backups and must be deleted according to their retention
-policy.
+The product creates and retains no backups or recovery copies of the vault,
+device keys, databases, local state or generated evidence. If every authorized
+device key is lost, the old encrypted records remain unrecoverable. Email OTP
+does not change this policy. Retry queues are bounded transport state with
+explicit retention, not recovery copies.

@@ -3,10 +3,10 @@
 - Public source and self-hosting are first-class requirements.
 - Rust, Flutter and public design tokens use AGPL-3.0-only. NDDev OpenNetwork
   attribution and the https://nddev.ai link remain in product surfaces.
-- Passwordless email OTP is the alpha product sign-in method. One bootstrap
+- Email OTP and GitHub OAuth PKCE are the alpha product sign-in methods. One bootstrap
   owner is configured privately; device identity and E2EE vault access remain
   separate. See [identity](03-identity-and-vault.md) and
-  [ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md).
+  [ADR 0003](decisions/0003-dual-sign-in-and-platform-scope.md).
 - Docker Compose is the alpha deployment path. The first scale target is one
   person or small team; future ownership boundaries are explicit, while team
   administration remains deferred.

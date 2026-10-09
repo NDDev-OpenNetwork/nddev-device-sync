@@ -15,7 +15,7 @@ routine engineering choices. Preserve unrelated dirty work and live services.
 
 - Domain/application stay independent of OS, UI and concrete I/O.
 - Native credentials and E2EE keys remain outside metadata stores and telemetry.
-- Product email-OTP identity is separate from device identity, vault decryption
+- Product email-OTP/GitHub identity is separate from device identity, vault decryption
   and third-party harness accounts. Read the locked identity contract.
 - Modules are compiled-in and manifest-driven; planned entries are not working
   adapters. Add only code used by an accepted behavior.

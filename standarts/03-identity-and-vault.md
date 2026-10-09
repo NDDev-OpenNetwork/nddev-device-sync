@@ -2,10 +2,9 @@
 
 ## Product identity
 
-NDS alpha sign-in uses a one-time code delivered to email. There are no passwords,
-GitHub sign-in alternative or hidden test-login paths. GitHub remains a tool
-integration. This decision supersedes the previous GitHub-only identity baseline
-through [ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md).
+NDS alpha sign-in offers email OTP and GitHub OAuth with PKCE for one account.
+There are no passwords or hidden test-login paths. The two-method decision is
+recorded in [ADR 0003](decisions/0003-dual-sign-in-and-platform-scope.md).
 
 An operator privately configures one bootstrap owner address. No public
 registration or first-visitor ownership claim exists. The owner has a stable
@@ -28,6 +27,17 @@ authorization scope. Email possession authenticates the account; it does not
 prove possession of a device key or grant vault decryption.
 Email OTP trusts mailbox control; it is not phishing-resistant multifactor
 authentication. Delivery and authentication secrets never become log fields.
+
+GitHub sign-in uses an unguessable single-use state, PKCE S256, an exact
+allowlisted callback and bounded one-time handoff to the initiating client.
+The server revalidates the provider identity after code exchange and matches
+its stable numeric ID to an explicit private owner binding. Never merge accounts
+by a client-supplied identity, display name or unverified email. Both methods
+issue the same NDS session type and enforce the same authorization policy.
+The operator stores the OAuth application secret separately; provider tokens
+are transient for identity verification and are not retained as product
+credentials. Linking a provider requires explicit authenticated revalidation
+or an operator's preconfigured binding; it is not open registration.
 
 ## Device and service identities
 

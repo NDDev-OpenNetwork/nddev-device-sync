@@ -14,21 +14,19 @@ formatted by the platform localization libraries.
 
 ## NDDev OpenNetwork visual direction
 
-Generated images, illustrations and empty states combine three references:
+Use the existing NDDev platform's OpenNetwork direction: yellow/gold accents,
+neutral dark/light surfaces, IBM Plex Sans and its control geometry and states.
+[ADR 0004](decisions/0004-opennetwork-visual-source.md) corrects the earlier
+independently styled NDS palette.
 
-- NDDev OpenNetwork's architecture-first, systems-oriented language;
-- the open NDDev OpenNetwork agent and intelligence direction;
-- a restrained space/observatory motif for devices, telemetry and network
-  relationships.
+The public `nddev-opennetwork-design-system` repository owns the versioned
+OpenNetwork token and native UI-kit projection. New screens consume its colors,
+typography, spacing, radii, focus and interaction states; they do not introduce
+local one-off styling. Preserve the authentic NDDev mark and the OpenNetwork
+direction colors in application and launcher assets. Reusable visual sources
+and redistributable fonts carry provenance and licenses; private site content,
+configuration and screenshots stay outside public packages.
 
-The color palette, typography scale, spacing, radii, shadows and icon rules
-come from the public `nddev-opennetwork-design-system` repository. New screens
-consume its design tokens; they do not introduce local one-off colors or
-typography. The visual language
-uses dark observatory surfaces, clear status colors, structured grids and
-controlled cosmic accents. Decorative space imagery must never reduce
-contrast, obscure status, or compete with operational information.
-
-Generated assets are original and fit the system's tokens. Logos, screenshots
-and protected site assets are not copied into the application. Every important
-state also has a text and accessible representation.
+Every important state has text and an accessible representation. Native controls
+retain keyboard, focus, disabled/error semantics and text scaling. Theme-specific
+contrast corrections remain authoritative; decoration never obscures status.

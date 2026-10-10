@@ -14,12 +14,12 @@
     {"id":"mobile","repository":"nddev-device-sync-mobile","kind":"flutter-client","status":"planned","platforms":["ios","android"]},
     {"id":"observability","repository":"nddev-device-sync-observability","kind":"service","status":"planned","platforms":["linux"]},
     {"id":"accounts","repository":"nddev-device-sync-accounts","kind":"module","status":"planned","platforms":["all"]},
-    {"id":"gds","repository":"nddev-device-sync-gds","kind":"adapter","status":"planned","platforms":["all"]},
-    {"id":"rds","repository":"nddev-device-sync-rds","kind":"adapter","status":"planned","platforms":["all"]},
-    {"id":"sysinfo","repository":"nddev-device-sync-sysinfo","kind":"adapter","status":"planned","platforms":["all"]},
-    {"id":"clipboard","repository":"nddev-device-sync-clipboard","kind":"adapter","status":"planned","platforms":["all"]},
-    {"id":"cleaner","repository":"nddev-device-sync-cleaner","kind":"adapter","status":"planned","platforms":["all"]},
-    {"id":"updater","repository":"nddev-device-sync-updater","kind":"adapter","status":"planned","platforms":["all"]},
+    {"id":"gds","repository":"nddev-device-sync-gds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
+    {"id":"rds","repository":"nddev-device-sync-rds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
+    {"id":"sysinfo","repository":"nddev-device-sync-sysinfo","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
+    {"id":"clipboard","repository":"nddev-device-sync-clipboard","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
+    {"id":"cleaner","repository":"nddev-device-sync-cleaner","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
+    {"id":"updater","repository":"nddev-device-sync-updater","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
     {"id":"estate","repository":"nddev-device-sync-estate","kind":"self-hosting-engine","status":"future","platforms":["linux"]},
     {"id":"design-system","repository":"nddev-opennetwork-design-system","kind":"design-system","status":"alpha","platforms":["all"]}
   ]

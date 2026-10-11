@@ -1,6 +1,6 @@
 # System architecture
 
-Flutter desktop/mobile presentation calls a typed bridge into the Rust core
+Flutter desktop/mobile/web presentation calls a typed bridge into the Rust core
 and device agent. Signed HTTPS requests connect enrolled device identities to the Rust
 control server. PostgreSQL owns authoritative control state and encrypted
 vault records. Telemetry follows the [observability pipeline](05-observability.md).
@@ -19,6 +19,7 @@ it is not copied into a second central workspace.
 | Server | HTTP, identity delivery, PostgreSQL and TLS adapters; composition |
 | Device agent | Native capability composition and bounded CLI operations |
 | Desktop/mobile | Flutter presentation and typed bridge clients |
+| Web | Shared Flutter presentation, Rust WebAssembly and explicit browser I/O adapters |
 | Observability | Telemetry normalization, delivery and alert state |
 | Other modules | Their declared capabilities and integrations |
 

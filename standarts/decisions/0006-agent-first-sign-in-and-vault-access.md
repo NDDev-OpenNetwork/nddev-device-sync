@@ -45,8 +45,9 @@ Offline devices expose stale/pending/conflicted state, not global freshness.
 
 ## Transition
 
-Existing module locks and published tags keep their original meaning. Current
-clients implement two sign-in methods and explicit trusted-device key transfer;
+Existing module locks and published tags keep their original meaning. Clients
+at the time of this decision implemented two sign-in methods and explicit
+trusted-device key transfer;
 this decision is not runtime acceptance. Adopt server-managed keys and the
 three-method contract through a coordinated version boundary. Existing locally
 created vaults require one authenticated registration of their existing key

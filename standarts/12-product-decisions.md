@@ -3,10 +3,10 @@
 - Public source and self-hosting are first-class requirements.
 - Rust, Flutter and public design tokens use AGPL-3.0-only. NDDev OpenNetwork
   attribution and the https://nddev.ai link remain in product surfaces.
-- Email OTP, GitHub OAuth PKCE and passkeys are the accepted sign-in target for
+- Email OTP, GitHub OAuth PKCE and passkeys are sign-in methods for
   one privately configured bootstrap owner. Vault access prepares automatically
   after sign-in through server-managed keys, independently of other devices.
-  Existing locked clients implement two methods and trusted-device transfer.
+  Historical locks retain their original compatibility scope.
   See [identity](03-identity-and-vault.md) and
   [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md).
 - Agent interfaces and Flutter consume the same Rust use cases through typed,

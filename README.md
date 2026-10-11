@@ -25,8 +25,10 @@ of runtime qualification; each runtime repository owns that evidence.
 Existing module locks and published alpha tags keep their original meaning.
 
 The catalog describes repository boundaries and declared platforms, not a
-release bill of materials or a runtime capability response. Browser work remains
-[planned after native qualification](standarts/decisions/0005-web-client-planning.md).
+release bill of materials or a runtime capability response. The accepted
+[offline browser scope](standarts/decisions/0007-offline-browser-client.md)
+requires a qualified Flutter Web/Rust implementation; the future catalog entry
+does not claim that the browser runtime already exists.
 
 Run `just setup` once to install isolated, pinned structural tooling, then
 `just check` for the central repository's structural checks. Runtime

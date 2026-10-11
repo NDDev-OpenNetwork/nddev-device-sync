@@ -2,7 +2,9 @@
 
 ## Stores
 
-- Client metadata and offline queues use per-user SQLite.
+- Native client metadata and offline queues use per-user SQLite. Browser
+  durability must satisfy [ADR 0007](decisions/0007-offline-browser-client.md)
+  through its qualified browser storage adapter and the same transaction rules.
 - The server's authoritative control state uses PostgreSQL 18.
 - Logs, metrics and traces use OpenObserve.
 - Secret bytes use the encrypted vault and native keyrings.

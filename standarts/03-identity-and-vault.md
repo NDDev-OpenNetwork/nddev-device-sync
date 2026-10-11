@@ -84,6 +84,12 @@ metadata, never plaintext secret bytes. Public DTOs and logs cannot expose
 resolved secrets. OTP verifiers and session records follow the separate
 authentication contract, not the vault encryption model.
 
+The browser credential adapter and bounded cached offline authorization follow
+[ADR 0007](decisions/0007-offline-browser-client.md). Its encrypted operational
+store is distinct from both native keyrings and the ciphertext replica. Browser
+storage must not be represented as native secure hardware or an immediately
+revocable offline session.
+
 The server creates or returns one established owner key transactionally and
 rechecks account/session/device authorization at delivery. Existing locally
 created vaults register their retained key once through authenticated native

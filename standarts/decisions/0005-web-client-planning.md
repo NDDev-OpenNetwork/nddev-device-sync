@@ -1,6 +1,9 @@
 # ADR 0005: web client planning boundary
 
-Status: proposed; follows the native first-version qualification.
+Status: superseded by [ADR 0007](0007-offline-browser-client.md), 2026-10-11.
+
+The planning notes below retain the earlier investigation context. The owner
+subsequently required durable offline browser work; ADR 0007 governs that scope.
 
 The owner requests a browser application alongside desktop and mobile. Evaluate
 Flutter Web with the same OpenNetwork design tokens, en/ru presentation, Rust

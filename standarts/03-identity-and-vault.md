@@ -2,12 +2,11 @@
 
 ## Product identity
 
-The accepted NDS sign-in target is email OTP, GitHub OAuth with PKCE and
+NDS supports email OTP, GitHub OAuth with PKCE and
 passkeys for one account. There are no passwords or hidden test-login paths.
 [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md) supersedes the
-two-method restriction in ADR 0003. Existing locked clients implement only OTP
-and GitHub; advertise a method only after its actual implementation and
-qualification.
+two-method restriction in ADR 0003. Advertise a method only when the running
+instance enables its implementation; preserve the original scope of older locks.
 
 An operator privately configures one bootstrap owner address. No public
 registration or first-visitor ownership claim exists. The owner has a stable
@@ -48,6 +47,10 @@ challenges. Public credentials bind to the stable NDS user ID. Enrollment,
 linking and revocation require authenticated revalidation; they never claim an
 instance or merge users by a client-supplied label. Native and browser adapters
 must report actual platform support and preserve the shared session policy.
+Owners can list bounded public passkey metadata and remove a credential after
+a recent sign-in. Removal atomically invalidates sessions linked to that
+credential; legacy passkey sessions without a credential binding also expire.
+Other sign-in methods retain their sessions. No credential verifier is a UI DTO.
 
 ## Device and service identities
 
@@ -88,6 +91,13 @@ HTTPS; a different key cannot overwrite the established binding. The device
 stores delivered keys in its native credential store. Key material never enters
 Flutter, agent transcripts or logs. Account switching uses only declared
 official harness support. No password fallback or recovery workflow is added.
+
+Records expose bounded cursor pages, committed revisions and observation
+freshness. Deletion is an encrypted tombstone. Conflict resolution is explicit
+and guarded by both revision and observed server sequence; concurrent changes
+cannot silently erase a later conflict. Authenticate and validate every incoming
+record before advancing an inbox page. A committed local outbox mutation returns
+its transaction receipt without depending on a subsequent network/key-store read.
 
 ## Recovery policy
 

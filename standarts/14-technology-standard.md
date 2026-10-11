@@ -7,16 +7,16 @@ repository's lockfile:
 | --- | --- |
 | Core language | Rust 1.99 stable, edition 2024 |
 | UI | Flutter 3.47+ and Dart stable |
-| Desktop background | Rust device agent; Flutter connects through a typed local bridge |
+| Desktop background | Rust native lifecycle while the app runs; typed local bridge and bounded agent CLI |
 | Mobile bridge | Rust core through a generated native bridge |
 | Server | Rust async service with Tokio and Axum |
 | API contract | OpenAPI 3.1 for HTTP; JSON Schema draft 2020-12 for events |
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |
 | Server state | PostgreSQL 18.x through SQLx with checked migrations |
 | Secrets | Native keyring plus encrypted vault records and server-managed owner key envelopes |
-| Identity | Email OTP, GitHub OAuth PKCE and WebAuthn passkeys as the accepted target; separate per-device signing keys |
+| Identity | Email OTP, GitHub OAuth PKCE and WebAuthn passkeys; separate per-device signing keys |
 | Email delivery | Server-owned transactional email adapter; provider-neutral port |
-| Transport | HTTPS/WebSocket with rustls and W3C trace context |
+| Transport | HTTPS signed request/response replication with rustls and W3C trace context |
 | Observability | `tracing`, OpenTelemetry, Vector and OpenObserve |
 | Infrastructure | Docker Compose only for alpha; `just` as command runner |
 | Rust checks | rustfmt, clippy, nextest, cargo-deny, cargo-audit, coverage |
@@ -28,7 +28,7 @@ message brokers are outside the alpha baseline. They may be proposed through an
 ADR when a measured requirement justifies the added surface.
 
 [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md) distinguishes
-the accepted identity target from the current two-method implementation and
+the current identity contract from historical two-method locks and
 records server authority for automatic vault key delivery and replica catch-up.
 
 Dependencies are added only with a purpose, owner, license decision, update

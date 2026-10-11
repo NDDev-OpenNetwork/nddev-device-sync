@@ -14,9 +14,13 @@ routine engineering choices. Preserve unrelated dirty work and live services.
 ## Boundaries
 
 - Domain/application stay independent of OS, UI and concrete I/O.
-- Native credentials and E2EE keys remain outside metadata stores and telemetry.
-- Product email-OTP/GitHub identity is separate from device identity, vault decryption
-  and third-party harness accounts. Read the locked identity contract.
+- Native credentials and unwrapped vault keys remain outside metadata stores,
+  presentation DTOs and telemetry. Server owner-key envelopes use a wrapping
+  key outside PostgreSQL.
+- Product identity is separate from device proof, cryptographic key possession
+  and third-party harness accounts. Read the locked identity contract and
+  ADR 0006: three sign-in methods and automatic vault access are the accepted
+  target; the server owns committed state and automatic vault key delivery.
 - Modules are compiled-in and manifest-driven; planned entries are not working
   adapters. Add only code used by an accepted behavior.
 - Existing GDS, RDS and system tools own their state and safety policies.

@@ -15,11 +15,12 @@ precede secret workflows; sign-in cannot reconstruct existing vault keys.
 
 GDS/RDS and system tools retain their native agent, state and safety policies.
 The browser uses explicitly supported agent capabilities and encrypted read
-models. No arbitrary shell, copied tool databases, key escrow, backup/recovery,
+models. No arbitrary shell, copied tool databases, backup/recovery,
 implicit deployment or alternate UI stack is authorized by this proposal.
 
 Existing standards release locks retain their meaning. This proposal does not
-declare web runtime support or change the current two-method identity contract.
+declare web runtime support. ADR 0006 separately records the accepted
+three-method identity target and server-managed automatic key delivery.
 
 References: [Flutter Web](https://docs.flutter.dev/platform-integration/web),
 [Web Crypto](https://www.w3.org/TR/WebCryptoAPI/),

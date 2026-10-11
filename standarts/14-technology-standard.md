@@ -13,8 +13,8 @@ repository's lockfile:
 | API contract | OpenAPI 3.1 for HTTP; JSON Schema draft 2020-12 for events |
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |
 | Server state | PostgreSQL 18.x through SQLx with checked migrations |
-| Secrets | Native keyring plus end-to-end encrypted vault records |
-| Identity | Email OTP and GitHub OAuth PKCE; separate per-device signing keys |
+| Secrets | Native keyring plus encrypted vault records and server-managed owner key envelopes |
+| Identity | Email OTP, GitHub OAuth PKCE and WebAuthn passkeys as the accepted target; separate per-device signing keys |
 | Email delivery | Server-owned transactional email adapter; provider-neutral port |
 | Transport | HTTPS/WebSocket with rustls and W3C trace context |
 | Observability | `tracing`, OpenTelemetry, Vector and OpenObserve |
@@ -26,6 +26,10 @@ repository's lockfile:
 React, Tauri, Kubernetes, service meshes, runtime native plugins and additional
 message brokers are outside the alpha baseline. They may be proposed through an
 ADR when a measured requirement justifies the added surface.
+
+[ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md) distinguishes
+the accepted identity target from the current two-method implementation and
+records server authority for automatic vault key delivery and replica catch-up.
 
 Dependencies are added only with a purpose, owner, license decision, update
 path and removal condition. A package must not be added merely to wrap one

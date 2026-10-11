@@ -8,6 +8,13 @@
 - Secret bytes use the encrypted vault and native keyrings.
 - Project source remains in Git and is not copied into the sync database.
 
+The server is the authority for committed state. Devices are replicas: startup,
+enrollment, reconnect and resume initiate reconciliation without depending on
+another device. Bounded background catch-up continues from its durable cursor
+until there is no remaining history. Expose whether the replica is catching up,
+its pending/conflicted mutations and its last fully caught-up observation;
+receiving one partial page does not establish freshness.
+
 ## Operation protocol
 
 Every mutation has an `operation_id`, `device_id`, `entity_id`, base revision,

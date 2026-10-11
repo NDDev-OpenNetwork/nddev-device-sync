@@ -13,9 +13,11 @@ state/
 *.log
 .env*
 
-apps/desktop/src-tauri/gen/
 node_modules/
 .dart_tool/
 build/
 .flutter-plugins
 .flutter-plugins-dependencies
+
+.venv/
+__pycache__/

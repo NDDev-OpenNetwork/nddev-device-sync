@@ -1,28 +1,202 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "module-catalog.schema.json",
   "catalog_version": 1,
   "product": "nddev-device-sync",
   "license": "AGPL-3.0-only",
   "organization": "NDDev-OpenNetwork",
   "channel": "alpha",
   "modules": [
-    {"id":"core","repository":"nddev-device-sync-core","kind":"shared-core","status":"alpha","platforms":["macos","linux","windows","ios","android"]},
-    {"id":"protocol","repository":"nddev-device-sync-protocol","kind":"contracts","status":"alpha","platforms":["all"]},
-    {"id":"server","repository":"nddev-device-sync-server","kind":"server","status":"alpha","release":"server-v0.0.1-alpha.8","platforms":["linux"]},
-    {"id":"agent","repository":"nddev-device-sync-agent","kind":"agent","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"desktop","repository":"nddev-device-sync-desktop","kind":"flutter-client","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"mobile","repository":"nddev-device-sync-mobile","kind":"flutter-client","status":"alpha","platforms":["ios","android"]},
-    {"id":"observability","repository":"nddev-device-sync-observability","kind":"service","status":"alpha","platforms":["linux"]},
-    {"id":"accounts","repository":"nddev-device-sync-accounts","kind":"module","status":"alpha","platforms":["linux","macos","windows","android","ios"]},
-    {"id":"vault","repository":"nddev-device-sync-vault","kind":"module","status":"alpha","platforms":["linux","macos","windows","android","ios"]},
-    {"id":"web","repository":"nddev-device-sync-web","kind":"flutter-client","status":"future","platforms":["web"]},
-    {"id":"gds","repository":"nddev-device-sync-gds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"rds","repository":"nddev-device-sync-rds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"sysinfo","repository":"nddev-device-sync-sysinfo","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"clipboard","repository":"nddev-device-sync-clipboard","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"cleaner","repository":"nddev-device-sync-cleaner","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"updater","repository":"nddev-device-sync-updater","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
-    {"id":"estate","repository":"nddev-device-sync-estate","kind":"self-hosting-engine","status":"future","platforms":["linux"]},
-    {"id":"design-system","repository":"nddev-opennetwork-design-system","kind":"design-system","status":"alpha","platforms":["all"]}
+    {
+      "id": "core",
+      "repository": "nddev-device-sync-core",
+      "kind": "shared-core",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows",
+        "ios",
+        "android"
+      ]
+    },
+    {
+      "id": "protocol",
+      "repository": "nddev-device-sync-protocol",
+      "kind": "contracts",
+      "status": "alpha",
+      "platforms": [
+        "all"
+      ]
+    },
+    {
+      "id": "server",
+      "repository": "nddev-device-sync-server",
+      "kind": "server",
+      "status": "alpha",
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "id": "agent",
+      "repository": "nddev-device-sync-agent",
+      "kind": "agent",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "desktop",
+      "repository": "nddev-device-sync-desktop",
+      "kind": "flutter-client",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "mobile",
+      "repository": "nddev-device-sync-mobile",
+      "kind": "flutter-client",
+      "status": "alpha",
+      "platforms": [
+        "ios",
+        "android"
+      ]
+    },
+    {
+      "id": "observability",
+      "repository": "nddev-device-sync-observability",
+      "kind": "service",
+      "status": "alpha",
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "id": "accounts",
+      "repository": "nddev-device-sync-accounts",
+      "kind": "module",
+      "status": "alpha",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows",
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "id": "vault",
+      "repository": "nddev-device-sync-vault",
+      "kind": "module",
+      "status": "alpha",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows",
+        "android",
+        "ios"
+      ]
+    },
+    {
+      "id": "web",
+      "repository": "nddev-device-sync-web",
+      "kind": "flutter-client",
+      "status": "future",
+      "platforms": [
+        "web"
+      ]
+    },
+    {
+      "id": "gds",
+      "repository": "nddev-device-sync-gds",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "rds",
+      "repository": "nddev-device-sync-rds",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "sysinfo",
+      "repository": "nddev-device-sync-sysinfo",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "clipboard",
+      "repository": "nddev-device-sync-clipboard",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows",
+        "android"
+      ]
+    },
+    {
+      "id": "cleaner",
+      "repository": "nddev-device-sync-cleaner",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "updater",
+      "repository": "nddev-device-sync-updater",
+      "kind": "adapter",
+      "status": "alpha",
+      "platforms": [
+        "macos",
+        "linux",
+        "windows"
+      ]
+    },
+    {
+      "id": "estate",
+      "repository": "nddev-device-sync-estate",
+      "kind": "self-hosting-engine",
+      "status": "future",
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "id": "design-system",
+      "repository": "nddev-opennetwork-design-system",
+      "kind": "design-system",
+      "status": "alpha",
+      "platforms": [
+        "all"
+      ]
+    }
   ]
 }

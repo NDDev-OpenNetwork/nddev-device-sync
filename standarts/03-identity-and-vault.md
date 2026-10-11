@@ -2,9 +2,12 @@
 
 ## Product identity
 
-NDS alpha sign-in offers email OTP and GitHub OAuth with PKCE for one account.
-There are no passwords or hidden test-login paths. The two-method decision is
-recorded in [ADR 0003](decisions/0003-dual-sign-in-and-platform-scope.md).
+The accepted NDS sign-in target is email OTP, GitHub OAuth with PKCE and
+passkeys for one account. There are no passwords or hidden test-login paths.
+[ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md) supersedes the
+two-method restriction in ADR 0003. Existing locked clients implement only OTP
+and GitHub; advertise a method only after its actual implementation and
+qualification.
 
 An operator privately configures one bootstrap owner address. No public
 registration or first-visitor ownership claim exists. The owner has a stable
@@ -24,7 +27,7 @@ The server sends codes through a narrow email-delivery adapter. Delivery
 credentials belong to the operator's secret store. Provider acceptance is not
 proof of mailbox delivery. Sessions have explicit expiry, revocation and
 authorization scope. Email possession authenticates the account; it does not
-prove possession of a device key or grant vault decryption.
+prove possession of a device key or supply a vault encryption key.
 Email OTP trusts mailbox control; it is not phishing-resistant multifactor
 authentication. Delivery and authentication secrets never become log fields.
 
@@ -32,12 +35,19 @@ GitHub sign-in uses an unguessable single-use state, PKCE S256, an exact
 allowlisted callback and bounded one-time handoff to the initiating client.
 The server revalidates the provider identity after code exchange and matches
 its stable numeric ID to an explicit private owner binding. Never merge accounts
-by a client-supplied identity, display name or unverified email. Both methods
+by a client-supplied identity, display name or unverified email. All methods
 issue the same NDS session type and enforce the same authorization policy.
 The operator stores the OAuth application secret separately; provider tokens
 are transient for identity verification and are not retained as product
 credentials. Linking a provider requires explicit authenticated revalidation
 or an operator's preconfigured binding; it is not open registration.
+
+Passkey registration and authentication use WebAuthn with exact configured RP
+and origin binding, required user verification and bounded single-use server
+challenges. Public credentials bind to the stable NDS user ID. Enrollment,
+linking and revocation require authenticated revalidation; they never claim an
+instance or merge users by a client-supplied label. Native and browser adapters
+must report actual platform support and preserve the shared session policy.
 
 ## Device and service identities
 
@@ -55,23 +65,36 @@ boundary, not inferred from a client-supplied tenant or user ID.
 
 ## Vault
 
-Harness tokens, SSH credentials and API keys are E2EE records. The server stores
-ciphertext, metadata and device-wrapped key material; it cannot read plaintext.
+The authenticated owner is entitled to vault access through all three sign-in
+methods. The server delivers the owner's vault key to an authenticated,
+enrolled, active device independently of other devices' availability. Native
+clients prepare access automatically; authentication does not itself derive
+the encryption key. See ADR 0006 for the explicit transition from older locks.
+
+Harness tokens, SSH credentials and API keys are encrypted records. PostgreSQL
+stores ciphertext and authenticated-encrypted owner key envelopes. A distinct
+operator wrapping key remains outside PostgreSQL. The server has decryption
+authority; do not describe this model as client-only E2EE.
 Each record has an owner, purpose, scope and lifecycle. Native credential stores
 hold local secrets; metadata stores and UI events hold references or redacted
 metadata, never plaintext secret bytes. Public DTOs and logs cannot expose
 resolved secrets. OTP verifiers and session records follow the separate
 authentication contract, not the vault encryption model.
 
-A new vault creates keys locally. An additional device receives existing
-vault key material wrapped by an already-authorized device. Email sign-in alone
-cannot reconstruct or reset these keys. No server escrow or password fallback
-is introduced. Account switching uses only declared official harness support.
+The server creates or returns one established owner key transactionally and
+rechecks account/session/device authorization at delivery. Existing locally
+created vaults register their retained key once through authenticated native
+HTTPS; a different key cannot overwrite the established binding. The device
+stores delivered keys in its native credential store. Key material never enters
+Flutter, agent transcripts or logs. Account switching uses only declared
+official harness support. No password fallback or recovery workflow is added.
 
 ## Recovery policy
 
 The product creates and retains no backups or recovery copies of the vault,
-device keys, databases, local state or generated evidence. If every authorized
-device key is lost, the old encrypted records remain unrecoverable. Email OTP
-does not change this policy. Retry queues are bounded transport state with
+device keys, databases, local state or generated evidence. Server key envelopes
+and native caches are the authorized operational stores, not recovery copies.
+Loss of the server wrapping key and every usable native vault key leaves the
+encrypted records unrecoverable. Email OTP cannot regenerate those keys.
+Retry queues are bounded transport state with
 explicit retention, not recovery copies.

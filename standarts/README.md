@@ -14,8 +14,10 @@ Keep one canonical statement of each rule. Implementation details belong in
 code, schemas and executable checks; historical alternatives stay in Git history.
 The current engineering and identity baseline is recorded in
 [ADR 0002](decisions/0002-autonomous-engineering-and-email-identity.md), with
-the two sign-in methods and platform scope updated by
-[ADR 0003](decisions/0003-dual-sign-in-and-platform-scope.md).
+the platform scope updated by
+[ADR 0003](decisions/0003-dual-sign-in-and-platform-scope.md) and the three-method,
+agent-first identity target recorded in
+[ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md).
 An edit here does not change the meaning of a module's existing release lock.
 
 ## Normative documents

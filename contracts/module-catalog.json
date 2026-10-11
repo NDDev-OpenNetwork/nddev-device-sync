@@ -14,6 +14,8 @@
     {"id":"mobile","repository":"nddev-device-sync-mobile","kind":"flutter-client","status":"alpha","platforms":["ios","android"]},
     {"id":"observability","repository":"nddev-device-sync-observability","kind":"service","status":"alpha","platforms":["linux"]},
     {"id":"accounts","repository":"nddev-device-sync-accounts","kind":"module","status":"alpha","platforms":["linux","macos","windows","android","ios"]},
+    {"id":"vault","repository":"nddev-device-sync-vault","kind":"module","status":"alpha","platforms":["linux","macos","windows","android","ios"]},
+    {"id":"web","repository":"nddev-device-sync-web","kind":"flutter-client","status":"future","platforms":["web"]},
     {"id":"gds","repository":"nddev-device-sync-gds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
     {"id":"rds","repository":"nddev-device-sync-rds","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},
     {"id":"sysinfo","repository":"nddev-device-sync-sysinfo","kind":"adapter","status":"alpha","platforms":["macos","linux","windows"]},

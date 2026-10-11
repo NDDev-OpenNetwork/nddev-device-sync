@@ -9,6 +9,7 @@ repository's lockfile:
 | UI | Flutter 3.47+ and Dart stable |
 | Desktop background | Rust native lifecycle while the app runs; typed local bridge and bounded agent CLI |
 | Mobile bridge | Rust core through a generated native bridge |
+| Browser | Flutter Web, stable Rust WebAssembly, browser credential/durability adapters under ADR 0007 |
 | Server | Rust async service with Tokio and Axum |
 | API contract | OpenAPI 3.1 for HTTP; JSON Schema draft 2020-12 for events |
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |

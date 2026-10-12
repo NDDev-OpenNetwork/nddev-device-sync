@@ -3,7 +3,7 @@
   "catalog_version": 1,
   "product": "nddev-device-sync",
   "license": "AGPL-3.0-only",
-  "organization": "NDDev-OpenNetwork",
+  "organization": "NDDev-Technocracy-OpenNetwork-NDS",
   "channel": "alpha",
   "modules": [
     {

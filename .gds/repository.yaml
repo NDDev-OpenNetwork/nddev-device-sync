@@ -1,0 +1,43 @@
+schema_version: 1
+repository:
+  id: "repo_01M4R3MGEBY35CV1DCK0DZZWJN"
+  display_name: "nddev-device-sync"
+  roles:
+    - "project"
+  lifecycle: "active"
+provider:
+  type: "github"
+  installation: "installation:github-nddev-technocracy-opennetwork-nds"
+  repository_id: 1411020088
+  owner: "NDDev-Technocracy-OpenNetwork-NDS"
+  name: "nddev-device-sync"
+classification:
+  portfolios:
+    - "portfolio:nddev-technocracy-opennetwork-nds"
+  visibility_contract: "public"
+  data_classification: "public"
+product:
+  purpose: "NDS is the public, self-hostable NDDev OpenNetwork control plane for devices, servers and agent-work tools. Rust owns the domain and system behavior; Flutter owns the shared client presentation."
+  capabilities:
+    - "Umbrella control plane for the NDS product family"
+    - "Coordinates the protocol, server, client and native adapter repositories"
+policy:
+  profiles:
+    - "repository-default"
+    - "opennetwork-default"
+  rollout_ring: "standard"
+git:
+  default_branch: "main"
+  integration: "pull-request"
+  branch_model: "task-branches"
+  handoff_pr: "preferred"
+  cleanup: "merged-only"
+agent:
+  context_profile: "project-default"
+  generated_agents: false
+  serena:
+    enabled: false
+    provenance_required: false
+release:
+  mode: "version-tag"
+  tag_style: "v-semver"

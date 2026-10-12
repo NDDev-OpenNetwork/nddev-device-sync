@@ -12,15 +12,15 @@ spec.loader.exec_module(contracts)
 
 
 class Contracts(unittest.TestCase):
-    def test_mobile_and_descriptor_boundaries(self):
-        value = {'id': 'clipboard', 'version': '0.0.1-alpha.2', 'api_version': 1,
-                 'kind': 'tool', 'platforms': ['android', 'ios'],
+    def test_native_browser_and_descriptor_boundaries(self):
+        value = {'id': 'clipboard', 'version': '0.0.1-alpha.3', 'api_version': 1,
+                 'kind': 'tool', 'platforms': ['android', 'ios', 'web'],
                  'capabilities': ['share_clipboard'], 'permissions': ['clipboard'],
                  'dependencies': []}
         contracts.descriptor(value)
         for patch in [
             {'id': 'bad/id'}, {'api_version': 0}, {'api_version': 65536},
-            {'platforms': ['android', 'android']}, {'platforms': ['web']},
+            {'platforms': ['android', 'android']}, {'platforms': ['invented']},
             {'capabilities': ['invented']}, {'permissions': ['root']},
             {'version': '   '}, {'dependencies': [{'id': 'core', 'minimum_api': 0}]},
             {'dependencies': [{'id': 'clipboard', 'minimum_api': 1}]},

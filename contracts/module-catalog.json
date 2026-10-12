@@ -3,7 +3,7 @@
   "catalog_version": 1,
   "product": "nddev-device-sync",
   "license": "AGPL-3.0-only",
-  "organization": "NDDev-OpenNetwork",
+  "organization": "NDDev-Technocracy-OpenNetwork-NDS",
   "channel": "alpha",
   "modules": [
     {
@@ -16,7 +16,8 @@
         "linux",
         "windows",
         "ios",
-        "android"
+        "android",
+        "web"
       ]
     },
     {
@@ -88,7 +89,8 @@
         "macos",
         "windows",
         "android",
-        "ios"
+        "ios",
+        "web"
       ]
     },
     {
@@ -101,14 +103,15 @@
         "macos",
         "windows",
         "android",
-        "ios"
+        "ios",
+        "web"
       ]
     },
     {
       "id": "web",
       "repository": "nddev-device-sync-web",
       "kind": "flutter-client",
-      "status": "future",
+      "status": "alpha",
       "platforms": [
         "web"
       ]
@@ -155,7 +158,8 @@
         "macos",
         "linux",
         "windows",
-        "android"
+        "android",
+        "web"
       ]
     },
     {

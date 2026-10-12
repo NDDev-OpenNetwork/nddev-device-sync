@@ -48,5 +48,5 @@ baseline for `v0.0.n-alpha.k`; they are reviewed before the first public
 artifact and again before moving to `beta`.
 
 The public visual token source is
-`NDDev-OpenNetwork/nddev-opennetwork-design-system`, licensed under
+`NDDev-Technocracy-OpenNetwork-NDS/nddev-opennetwork-design-system`, licensed under
 AGPL-3.0-only.

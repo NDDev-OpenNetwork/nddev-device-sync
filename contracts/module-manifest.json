@@ -46,7 +46,8 @@
           "linux",
           "windows",
           "android",
-          "ios"
+          "ios",
+          "web"
         ]
       },
       "minItems": 1,

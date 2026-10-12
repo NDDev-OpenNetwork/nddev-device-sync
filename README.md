@@ -43,3 +43,6 @@ To check an actual compiled-in descriptor against the central contract, run
 `.venv/bin/python scripts/check-contracts.py /path/to/module/contracts/module.json`.
 This validates schema and dependency declarations; runtime activation, dependency
 graph compatibility and OS behavior remain the runtime owner’s responsibility.
+The descriptor schema includes the `web` platform accepted by ADR 0007.
+Earlier native-only schema snapshots cannot validate browser descriptors;
+their immutable release and source locks remain unchanged.

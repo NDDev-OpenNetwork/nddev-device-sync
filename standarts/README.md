@@ -20,6 +20,8 @@ agent-first identity target recorded in
 [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md).
 [ADR 0007](decisions/0007-offline-browser-client.md) adds the accepted offline
 browser scope and its implementation/qualification gates.
+[ADR 0008](decisions/0008-nds-owned-screen-view.md) defines the NDS-owned screen
+endpoint boundary while preserving existing native RDS identities and policy.
 An edit here does not change the meaning of a module's existing release lock.
 
 ## Normative documents

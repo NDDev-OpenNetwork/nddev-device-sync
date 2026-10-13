@@ -122,7 +122,6 @@
       "kind": "adapter",
       "status": "alpha",
       "platforms": [
-        "macos",
         "linux"
       ]
     },

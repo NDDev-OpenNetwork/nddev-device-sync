@@ -123,8 +123,7 @@
       "status": "alpha",
       "platforms": [
         "macos",
-        "linux",
-        "windows"
+        "linux"
       ]
     },
     {

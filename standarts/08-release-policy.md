@@ -13,22 +13,27 @@ security, observability and compatibility gates for the preceding channel.
 
 ## Versions
 
-The synchronized release train uses `v0.0.n` while the product is pre-1.0.
-Each artifact has its own channel and component tag:
+The product being built is **NDS 1, first alpha**. The coordinated product
+identifier is `1.0.0-alpha.<candidate>`. One release manifest binds the component
+source revisions, artifact identities and data compatibility for that candidate.
+Component tags identify artifacts within that same product train:
 
 ```text
-desktop-v0.0.1-alpha.1
-mobile-v0.0.1-alpha.1
-server-v0.0.1-alpha.1
+desktop-v1.0.0-alpha.1
+mobile-v1.0.0-alpha.1
+server-v1.0.0-alpha.1
 ```
 
-The `n` value identifies the coordinated product train. The alpha/beta/release
-counter identifies the candidate within that channel. Desktop, mobile and
-server may ship independently only when their protocol compatibility is
-explicitly recorded.
+The candidate identifies a coordinated build, not a new product generation.
+Desktop, mobile and server may ship independently only when the release manifest
+records their compatibility. Existing immutable tags and library/source locks
+retain their identities; no retroactive rename or blanket version bump is implied.
 
-Stable product semantics begin at `v1.0.0`; until then, breaking changes are
-allowed only with a migration note and a versioned contract update.
+Stable release semantics begin at `v1.0.0`. During alpha, a contract change needs
+an explicit coordinated transition for existing data and consumers. Internal
+wire/storage migration numbers remain distinct from the user-facing product
+version. Maintain one current implementation and only the verified transition
+needed by actual retained data, rather than independent competing product lines.
 
 ## Artifacts
 
@@ -37,4 +42,9 @@ artifacts use the platform stores or signed distribution packages. Server
 artifacts are signed container images with SBOM and build provenance. Release
 receipts contain source commit, toolchain, dependency lock hashes, artifact
 digests and migration version.
+
+NDS application update discovery, staging and activation follow
+[ADR 0009](decisions/0009-first-alpha-product-contract.md). Store channels use
+their platform update mechanism; direct Android APK distribution preserves the
+package signing identity. An update cannot discard unsent work or reset stores.
 

@@ -85,7 +85,12 @@ resolved secrets. OTP verifiers and session records follow the separate
 authentication contract, not the vault encryption model.
 
 The browser credential adapter and bounded cached offline authorization follow
-[ADR 0007](decisions/0007-offline-browser-client.md). Its encrypted operational
+[ADR 0007](decisions/0007-offline-browser-client.md), as amended by
+[ADR 0009](decisions/0009-first-alpha-product-contract.md): the first-alpha target
+is seven days from successful server verification, with authorized online renewal.
+Existing shorter grants keep their original expiry until revalidated; the
+implementation transition must be qualified before the longer window is advertised.
+Its encrypted operational
 store is distinct from both native keyrings and the ciphertext replica. Browser
 storage must not be represented as native secure hardware or an immediately
 revocable offline session.

@@ -7,7 +7,7 @@ repository's lockfile:
 | --- | --- |
 | Core language | Rust 1.99 stable, edition 2024 |
 | UI | Flutter 3.47+ and Dart stable |
-| Desktop background | Rust native lifecycle while the app runs; typed local bridge and bounded agent CLI |
+| Desktop background | One owned Rust background lifetime, typed local bridge and bounded agent capabilities; qualification required by ADR 0009 |
 | Mobile bridge | Rust core through a generated native bridge |
 | Browser | Flutter Web, stable Rust WebAssembly, browser credential/durability adapters under ADR 0007 |
 | Server | Rust async service with Tokio and Axum |
@@ -35,3 +35,10 @@ records server authority for automatic vault key delivery and replica catch-up.
 Dependencies are added only with a purpose, owner, license decision, update
 path and removal condition. A package must not be added merely to wrap one
 standard-library operation.
+
+The first-alpha assembly adopts the latest stable releases of this approved
+stack through a checked component set, as required by
+[ADR 0009](decisions/0009-first-alpha-product-contract.md). The table identifies
+the current technology family; exact versions and source identities belong to
+the qualified locks and release manifest. A documented compatibility pin needs
+an upstream issue and an explicit removal condition.

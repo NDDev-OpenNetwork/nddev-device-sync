@@ -24,5 +24,11 @@
   alpha -> beta -> release train.
 - Existing tools retain authority until approved migrations pass compatibility
   checks. Their repositories and private state are not disposable scaffolding.
+- [ADR 0009](decisions/0009-first-alpha-product-contract.md) records the accepted
+  NDS 1 first-alpha outcomes: sign-in-driven device enrollment and module setup,
+  seven-day offline access, continuous synchronization where the platform permits,
+  bidirectional GDS commit sync, cross-device screen viewing, NDS application
+  updates and shared observability. Its acceptance matrix distinguishes target
+  behavior from the currently qualified implementation.
 - Backup/recovery remains disabled, including after the first release, until an
   explicit future product decision.

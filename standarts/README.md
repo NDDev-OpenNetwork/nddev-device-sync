@@ -22,6 +22,8 @@ agent-first identity target recorded in
 browser scope and its implementation/qualification gates.
 [ADR 0008](decisions/0008-nds-owned-screen-view.md) defines the NDS-owned screen
 endpoint boundary while preserving existing native RDS identities and policy.
+[ADR 0009](decisions/0009-first-alpha-product-contract.md) defines the accepted
+NDS 1 first-alpha outcomes and their cross-platform acceptance boundary.
 An edit here does not change the meaning of a module's existing release lock.
 
 ## Normative documents
@@ -46,7 +48,7 @@ An edit here does not change the meaning of a module's existing release lock.
 ## Status
 
 The product starts in the `alpha` channel. These documents describe the
-baseline for `v0.0.n-alpha.k`; they are reviewed before the first public
+baseline for `1.0.0-alpha.<candidate>`; they are reviewed before the first public
 artifact and again before moving to `beta`.
 
 The public visual token source is

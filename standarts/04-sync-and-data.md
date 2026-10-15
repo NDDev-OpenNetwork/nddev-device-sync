@@ -40,6 +40,12 @@ Tenant/user ownership comes from authenticated server context and is checked
 for every entity and cursor. Offline clients expose pending/conflicted state
 and freshness; they cannot claim immediate global consistency while disconnected.
 
+[ADR 0009](decisions/0009-first-alpha-product-contract.md) defines the first-alpha
+target for continuous native execution, seven-day offline authorization, complete
+supported module-data collection and bidirectional GDS commit synchronization.
+These are acceptance requirements, not claims that the current runtime has
+already implemented them.
+
 ## Data classes
 
 1. Device and module state.

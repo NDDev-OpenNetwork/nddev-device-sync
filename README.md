@@ -24,6 +24,12 @@ methods depend on the instance configuration. A compiled platform is not proof
 of runtime qualification; each runtime repository owns that evidence.
 Existing module locks and published alpha tags keep their original meaning.
 
+[ADR 0009](standarts/decisions/0009-first-alpha-product-contract.md) records the
+accepted NDS 1 first-alpha outcomes and acceptance criteria. It includes module
+setup after sign-in, seven-day offline authorization, bidirectional GDS sync,
+cross-device viewing, NDS application updates and common observability. These
+targets are not a claim that the deployed composition already implements them.
+
 The catalog describes repository boundaries and declared platforms, not a
 release bill of materials or a runtime capability response. The accepted
 [offline browser scope](standarts/decisions/0007-offline-browser-client.md)

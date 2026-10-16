@@ -67,6 +67,13 @@ one canonical NDS model. Relocation preserves existing repositories, worktrees
 and user edits. Every scan, queue, Git operation, retry and resource allocation
 has finite bounds and observable completion.
 
+The first-alpha capacity target is at least 1024 repositories per owner across
+32 devices. Qualify concurrent initialization, unchanged repeated scans,
+conflict settlement, restart and sustained synchronization at that size.
+Shared repository/owner facts are not duplicated per device. Account for
+device-specific observations separately; preserve original requests and receipts
+under pressure rather than hiding saturation by increasing quotas.
+
 ## RDS
 
 An enabled RDS viewer can view any enrolled, authorized target with its RDS

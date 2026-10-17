@@ -11,6 +11,8 @@ The canonical message catalog uses ICU-compatible ARB resources so Flutter's
 generated localization workflow and other clients can share message IDs and
 formatting rules. Locale-sensitive dates, numbers, units and plural forms are
 formatted by the platform localization libraries.
+React consumes a generated typed projection of that catalog; do not maintain
+independent message IDs, placeholder contracts or translations for web.
 
 ## NDDev OpenNetwork visual direction
 
@@ -22,8 +24,9 @@ independently styled NDS palette.
 The public `nddev-opennetwork-design-system` repository owns the versioned
 OpenNetwork token and native UI-kit projection. New screens consume its colors,
 typography, spacing, radii, focus and interaction states; they do not introduce
-local one-off styling. Preserve the authentic NDDev mark and the OpenNetwork
-direction colors in application and launcher assets. Reusable visual sources
+local one-off styling. React uses shadcn/ui primitives consuming the same tokens.
+Preserve the authentic NDDev mark and OpenNetwork colors in application and
+launcher assets. Reusable visual sources
 and redistributable fonts carry provenance and licenses; private site content,
 configuration and screenshots stay outside public packages.
 

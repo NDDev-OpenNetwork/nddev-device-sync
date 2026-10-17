@@ -4,12 +4,16 @@ Status: accepted owner direction, 2026-10-15; implementation and acceptance pend
 
 ## Product boundary
 
-NDS 1 has one owner and at most 32 active devices. Signing in establishes the
+NDS 1 supports at most 32 active devices per user. The original single-owner
+baseline transitions to companies and invited users under
+[ADR 0011](0011-company-membership-and-device-access.md). Signing in establishes the
 account context, enrolls the current installation through the existing device
 proof, prepares Vault access and exposes the module catalog. Adding a module
 records its desired state for that device and reports actual installation,
-permission and readiness separately. All clients use the same Core rules and
-Flutter presentation. OS-required bindings remain narrow I/O adapters.
+permission and readiness separately. All clients use the same Core rules.
+Presentation is Flutter on desktop/mobile and React/TypeScript on web, as
+amended by [ADR 0010](0010-react-browser-presentation.md).
+OS-required bindings remain narrow I/O adapters.
 
 There are six existing native tool adapters: Sysinfo, Clipboard, Cleaner,
 Updater, GDS and RDS. The distinct harness catalog contains eight names:
@@ -17,10 +21,11 @@ Claude Code, Codex, pi, agy, Devin, Grok, Cursor and OpenCode. Catalog presence
 does not assert an implemented provider capability. Use declared provider APIs
 and protected credential references for supported operations.
 
-Future organization membership has admin and member roles: an admin sees the
-organization's members and their NDS state; a member sees their own state.
-The first alpha retains one-owner authorization and explicit tenant/user/device
-scope. Organization administration is a future implementation, not an alpha gate.
+Company membership has admin and user roles under ADR 0011. An administrator
+manages membership and may view members' devices through authorized RDS; personal
+Vault, secrets and GDS data remain owner-only. Company isolation and membership
+are now alpha acceptance requirements, not claims about the current singleton
+server implementation.
 
 ## Shared state and continuous operation
 
@@ -82,7 +87,7 @@ are qualified separately on desktop, Android, iOS and web. Unsupported OS
 capabilities remain explicit; they are not counted as working implementations.
 
 Use the existing Rust RDS transport and media boundary, Core authorization and
-frame lifetime rules, Accounts credentials and shared Flutter viewer. Platform
+frame lifetime rules, Accounts credentials and typed presentation viewers. Platform
 capture consent, revocation, expiry and local disable remain binding. This is
 view-only scope: no remote keyboard/pointer, shell or file-transfer expansion.
 

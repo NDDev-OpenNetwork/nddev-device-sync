@@ -39,6 +39,7 @@ including errors and observability. Catalog entries and scaffolding are not
 completion. The owner selects the first product scope; implementation stays
 within that scope rather than creating every future repository.
 
-Backup/recovery, team administration, advanced deployment orchestration and
+Backup/recovery, advanced deployment orchestration and
 runtime plugins remain deferred. The engineering contract permits autonomous
 work within existing authorization, not silent expansion of these boundaries.
+Company membership and scoped RDS administration are accepted under ADR 0011.

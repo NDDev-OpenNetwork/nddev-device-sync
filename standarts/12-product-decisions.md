@@ -1,23 +1,24 @@
 # Product decisions
 
 - Public source and self-hosting are first-class requirements.
-- Rust, Flutter and public design tokens use AGPL-3.0-only. NDDev OpenNetwork
+- Owned Rust, Flutter, TypeScript and public design-token sources use AGPL-3.0-only;
+  third-party sources retain their compatible licenses. NDDev OpenNetwork
   attribution and the https://nddev.ai link remain in product surfaces.
 - Email OTP, GitHub OAuth PKCE and passkeys are sign-in methods for
-  one privately configured bootstrap owner. Vault access prepares automatically
+  verified users under the bootstrap and invitation policy in ADR 0011. Vault access prepares automatically
   after sign-in through server-managed keys, independently of other devices.
   Historical locks retain their original compatibility scope.
   See [identity](03-identity-and-vault.md) and
   [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md).
-- Agent interfaces and Flutter consume the same Rust use cases through typed,
+- Agent interfaces, Flutter and React consume the same Rust use cases through typed,
   bounded capabilities and redacted results. Native consumers use secret
   references; the control plane preserves each existing provider's policies.
 - The server owns committed state; devices catch up at startup and reconnect.
   Server-managed vault keys use a wrapping key outside PostgreSQL. The server
   has decryption authority; this supersedes the client-only E2EE boundary.
-- Docker Compose is the alpha deployment path. The first scale target is one
-  person or small team; future ownership boundaries are explicit, while team
-  administration remains deferred.
+- Docker Compose is the alpha deployment path. Companies, invited users and
+  narrowly scoped administrative RDS access are defined by
+  [ADR 0011](decisions/0011-company-membership-and-device-access.md).
 - Telemetry export is enabled by default and operator-controlled. Normal/debug
   modes share the same redaction guarantees and observable delivery state.
 - Desktop, mobile and server have separate versioned artifacts in the coordinated

@@ -6,10 +6,12 @@ repository's lockfile:
 | Concern | Standard |
 | --- | --- |
 | Core language | Rust 1.99 stable, edition 2024 |
-| UI | Flutter 3.47+ and Dart stable |
+| Native UI | Flutter 3.47+ and Dart stable |
 | Desktop background | One owned Rust background lifetime, typed local bridge and bounded agent capabilities; qualification required by ADR 0009 |
 | Mobile bridge | Rust core through a generated native bridge |
-| Browser | Flutter Web, stable Rust WebAssembly, browser credential/durability adapters under ADR 0007 |
+| Browser UI | React, Vite, strict TypeScript, TanStack Router/Query/Form and shadcn/ui under ADR 0010 |
+| Browser runtime | Stable Rust WebAssembly, typed browser credential/durability adapters under ADR 0007 |
+| Web tooling | Bun lockfile, TypeScript compiler, Biome, focused component/browser tests |
 | Server | Rust async service with Tokio and Axum |
 | API contract | OpenAPI 3.1 for HTTP; JSON Schema draft 2020-12 for events |
 | Local state | SQLite with migrations, WAL and bounded outbox/inbox |
@@ -24,9 +26,14 @@ repository's lockfile:
 | Flutter checks | dart format, dart analyze, Flutter unit/widget/integration tests |
 | Design | `nddev-opennetwork-design-system`, pinned alpha release |
 
-React, Tauri, Kubernetes, service meshes, runtime native plugins and additional
+Tauri, Kubernetes, service meshes, runtime native plugins and additional
 message brokers are outside the alpha baseline. They may be proposed through an
 ADR when a measured requirement justifies the added surface.
+
+[ADR 0010](decisions/0010-react-browser-presentation.md) replaces the Flutter Web
+presentation choice. Older immutable locks retain their Flutter baseline until
+the consuming assembly adopts and qualifies the replacement; native Flutter and
+Rust backend/domain requirements remain unchanged.
 
 [ADR 0006](decisions/0006-agent-first-sign-in-and-vault-access.md) distinguishes
 the current identity contract from historical two-method locks and

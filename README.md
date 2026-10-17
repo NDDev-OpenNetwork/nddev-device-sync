@@ -30,6 +30,9 @@ accepted NDS 1 first-alpha outcomes and acceptance criteria. It includes module
 setup after sign-in, seven-day offline authorization, bidirectional GDS sync,
 cross-device viewing, NDS application updates and common observability. These
 targets are not a claim that the deployed composition already implements them.
+[ADR 0011](standarts/decisions/0011-company-membership-and-device-access.md) adds
+companies and invited users with administrative RDS access; personal Vault and
+GDS data remain owner-only. The singleton server still requires this migration.
 
 The catalog describes repository boundaries and declared platforms, not a
 release bill of materials or a runtime capability response. The accepted

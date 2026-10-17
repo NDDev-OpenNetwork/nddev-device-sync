@@ -45,8 +45,8 @@ service that acquires every responsibility.
 Authoritative mutations preserve invariants transactionally. Offline/read
 models expose revision and freshness and converge through the sync protocol;
 never imply instantaneous consistency while disconnected. Tenant/user/device/
-server ownership is explicit from the start; team administration and distributed
-infrastructure appear only when an accepted need requires them.
+server ownership is explicit from the start. Company membership and scoped RDS
+administration follow ADR 0011; distributed infrastructure remains deferred.
 
 ## Agent execution loop
 

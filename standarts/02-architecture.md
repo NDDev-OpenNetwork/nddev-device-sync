@@ -23,6 +23,7 @@ it is not copied into a second central workspace.
 | Desktop/mobile | Flutter presentation and typed bridge clients |
 | Web | React/TanStack/shadcn presentation, Rust WebAssembly and typed browser I/O adapters |
 | Observability | Telemetry normalization, delivery and alert state |
+| Organizations | Company/membership client I/O; Core owns rules and the existing server owns authoritative persistence |
 | Other modules | Their declared capabilities and integrations |
 
 Presentation does not own sync rules, secrets, shell execution or package policy.

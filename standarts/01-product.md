@@ -16,6 +16,7 @@ The product coordinates these modules through typed contracts:
 - cleaner;
 - updater;
 - harness account management;
+- company membership and invitations;
 - server inventory and health;
 - logs, metrics, traces and alerts.
 

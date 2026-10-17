@@ -26,6 +26,9 @@ endpoint boundary while preserving existing native RDS identities and policy.
 NDS 1 first-alpha outcomes and their cross-platform acceptance boundary.
 [ADR 0010](decisions/0010-react-browser-presentation.md) changes the browser
 presentation to React/TypeScript while preserving Rust behavior and offline data.
+[ADR 0011](decisions/0011-company-membership-and-device-access.md) adds company
+membership, invitations and administrative RDS access while preserving personal
+data isolation.
 An edit here does not change the meaning of a module's existing release lock.
 
 ## Normative documents

@@ -5,8 +5,10 @@ Status: accepted owner direction, 2026-10-17; implementation and acceptance pend
 ## Ownership and roles
 
 A company is the top-level NDS tenant. Reuse the existing stable tenant identity;
-do not create a second parallel tenant/company authority. A company has active
-members with exactly two roles: `admin` and `user`. Its creator is its first
+do not create a second parallel tenant/company authority. In the first alpha,
+each user belongs to exactly one company; account identity and its private data
+are not shared between companies. A company has active members with exactly two
+roles: `admin` and `user`. Its creator is its first
 administrator. Creation is an explicit authenticated action within the operator's
 registration policy, never a first-visitor instance claim. Existing bootstrap
 identity restrictions remain until the qualified membership transition.

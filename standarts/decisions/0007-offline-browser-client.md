@@ -2,6 +2,9 @@
 
 Status: accepted, 2026-10-11; implementation and platform qualification required.
 
+Presentation amended by [ADR 0010](0010-react-browser-presentation.md).
+The offline and trust boundaries below remain binding.
+
 ## Decision
 
 The owner requires a Flutter web application alongside desktop and mobile,

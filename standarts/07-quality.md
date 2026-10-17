@@ -25,7 +25,7 @@ percentage and a green job are not substitutes for correctness.
 - Tests own and clean only their ephemeral resources. Never reset a real keyring,
   estate, database or unrelated worktree to make a test pass.
 
-## Rust and Flutter
+## Rust and presentation clients
 
 Rust repositories run formatting, Clippy with warnings denied, unit/property/
 contract tests and nextest, plus dependency advisory/license checks. Coverage
@@ -35,6 +35,12 @@ Flutter repositories run formatting, analysis, unit/widget tests and relevant
 accessibility/localization checks. Supported target acceptance uses actual
 platform builds and interaction tests. Golden tests cover stable visual
 contracts when they detect a meaningful regression.
+
+React/TypeScript repositories run the strict compiler, Biome, relevant
+component tests, generated-contract drift checks and actual browser acceptance.
+The browser replacement additionally proves preservation of pending encrypted
+work through the app-shell transition under ADR 0010. Passing a transpiler or
+rendering a shell does not qualify the migrated application.
 
 ## Contracts, integration and release
 

@@ -94,6 +94,20 @@
       ]
     },
     {
+      "id": "organizations",
+      "repository": "nddev-device-sync-organizations",
+      "kind": "module",
+      "status": "future",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows",
+        "android",
+        "ios",
+        "web"
+      ]
+    },
+    {
       "id": "vault",
       "repository": "nddev-device-sync-vault",
       "kind": "module",

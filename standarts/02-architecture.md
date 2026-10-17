@@ -1,7 +1,9 @@
 # System architecture
 
-Flutter desktop/mobile/web presentation calls a typed bridge into the Rust core
-and device agent. Signed HTTPS requests connect enrolled device identities to the Rust
+Flutter desktop/mobile and React/TypeScript web presentation call generated
+typed boundaries into the Rust runtime. The browser transition is governed by
+[ADR 0010](decisions/0010-react-browser-presentation.md).
+Signed HTTPS requests connect enrolled device identities to the Rust
 control server. PostgreSQL owns authoritative control state and encrypted
 vault records. Telemetry follows the [observability pipeline](05-observability.md).
 
@@ -19,11 +21,12 @@ it is not copied into a second central workspace.
 | Server | HTTP, identity delivery, PostgreSQL and TLS adapters; composition |
 | Device agent | Native capability composition and bounded CLI operations |
 | Desktop/mobile | Flutter presentation and typed bridge clients |
-| Web | Shared Flutter presentation, Rust WebAssembly and explicit browser I/O adapters |
+| Web | React/TanStack/shadcn presentation, Rust WebAssembly and typed browser I/O adapters |
 | Observability | Telemetry normalization, delivery and alert state |
+| Organizations | Company/membership client I/O; Core owns rules and the existing server owns authoritative persistence |
 | Other modules | Their declared capabilities and integrations |
 
-Flutter does not own sync rules, secrets, shell execution or package policy.
+Presentation does not own sync rules, secrets, shell execution or package policy.
 Domain code imports no async runtime, filesystem, SQL, HTTP or UI libraries.
 Application ports describe behavior, deadlines and cancellation; adapters own
 I/O. Do not create a crate, process or abstraction for each diagram box unless
@@ -35,7 +38,7 @@ one global service or duplicating authority in a client cache.
 
 ## Contracts and execution
 
-OpenAPI 3.1 and JSON Schema own wire contracts. Rust/Dart projections are
+OpenAPI 3.1 and JSON Schema own wire contracts. Rust/Dart/TypeScript projections are
 generated reproducibly and identify their source version; handwritten duplicate
 wire DTOs are forbidden. Domain models are separate from transport DTOs.
 

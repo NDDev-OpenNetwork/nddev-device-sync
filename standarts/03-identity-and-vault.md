@@ -8,11 +8,18 @@ passkeys for one account. There are no passwords or hidden test-login paths.
 two-method restriction in ADR 0003. Advertise a method only when the running
 instance enables its implementation; preserve the original scope of older locks.
 
-An operator privately configures one bootstrap owner address. No public
+An operator privately configures the bootstrap owner address. No public
 registration or first-visitor ownership claim exists. The owner has a stable
 internal user ID, independent of the email address; identity comparisons follow
 one explicit normalization rule. Real addresses and provider credentials never
 belong in public source, fixtures or manifests.
+
+[ADR 0011](decisions/0011-company-membership-and-device-access.md) adds companies
+and invited users to the alpha target. The creator is the first administrator;
+the current singleton identity implementation must be migrated and qualified.
+All sign-in methods resolve verified users through the same membership policy.
+Administrative access extends to same-company RDS, not another user's Vault or
+personal module data. The existing bootstrap's stable IDs and keys are preserved.
 
 OTP challenges use a cryptographically secure generator, finite lifetime,
 bounded attempts, resend limits and bounded storage. A resend invalidates the

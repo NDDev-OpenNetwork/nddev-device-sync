@@ -24,6 +24,8 @@ browser scope and its implementation/qualification gates.
 endpoint boundary while preserving existing native RDS identities and policy.
 [ADR 0009](decisions/0009-first-alpha-product-contract.md) defines the accepted
 NDS 1 first-alpha outcomes and their cross-platform acceptance boundary.
+[ADR 0010](decisions/0010-react-browser-presentation.md) changes the browser
+presentation to React/TypeScript while preserving Rust behavior and offline data.
 An edit here does not change the meaning of a module's existing release lock.
 
 ## Normative documents

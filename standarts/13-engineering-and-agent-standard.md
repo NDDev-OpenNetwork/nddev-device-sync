@@ -37,8 +37,9 @@ Routine engineering decisions do not require repeated approval.
 ## Architecture and scale
 
 Domain is pure Rust; application owns use cases and ports; adapters own I/O.
-Flutter is presentation. Existing tools retain ownership of their state and
-policies. Centralization means one authority for each concern, not a global
+Flutter and React/TypeScript are presentation under ADR 0010. Existing tools
+retain ownership of their state and policies. Centralization means one authority
+for each concern, not a global
 service that acquires every responsibility.
 
 Authoritative mutations preserve invariants transactionally. Offline/read

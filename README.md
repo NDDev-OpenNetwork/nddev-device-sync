@@ -1,8 +1,9 @@
 # nddev-device-sync
 
 NDS is the public, self-hostable NDDev OpenNetwork control plane for devices,
-servers and agent-work tools. Rust owns the domain and system behavior; Flutter
-provides desktop, mobile and web presentation in English and Russian. The product keeps
+servers and agent-work tools. Rust owns the domain and system behavior. The
+accepted presentation stack is Flutter for desktop/mobile and React with strict
+TypeScript for web, in English and Russian. The product keeps
 the NDDev OpenNetwork name and [nddev.ai](https://nddev.ai) attribution.
 
 License: AGPL-3.0-only. See [LICENSE](LICENSE) and [TRADEMARKS.md](TRADEMARKS.md).
@@ -34,7 +35,10 @@ The catalog describes repository boundaries and declared platforms, not a
 release bill of materials or a runtime capability response. The accepted
 [offline browser scope](standarts/decisions/0007-offline-browser-client.md)
 is implemented by the [web assembly](https://github.com/NDDev-Technocracy-OpenNetwork-NDS/nddev-device-sync-web),
-which reuses the shared Flutter UI and Rust domain/application modules. Browser
+whose current implementation reuses shared Flutter UI and Rust modules.
+[ADR 0010](standarts/decisions/0010-react-browser-presentation.md) replaces the
+browser presentation with React/TanStack/shadcn while retaining Rust/WASM and
+requiring an explicitly qualified migration. Browser
 adapters provide encrypted local credentials, a durable replica and telemetry
 queue, while the server remains authoritative for committed state. The web
 repository owns artifact provenance and browser qualification; an alpha catalog

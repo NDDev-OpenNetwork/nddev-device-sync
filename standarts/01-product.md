@@ -1,8 +1,10 @@
 # Product boundary
 
 `nddev-device-sync` is a distributed control plane for NDDev devices, servers,
-development tools and agent-work harnesses. It has shared Flutter presentation
-for desktop, mobile and web, a Rust client core, Rust server components, and a server-side
+development tools and agent-work harnesses. Its accepted clients use Flutter
+for desktop/mobile and React with strict TypeScript for web under
+[ADR 0010](decisions/0010-react-browser-presentation.md), a Rust client core,
+Rust server components, and a server-side
 observability pipeline.
 
 The product coordinates these modules through typed contracts:

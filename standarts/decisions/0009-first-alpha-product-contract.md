@@ -8,8 +8,10 @@ NDS 1 has one owner and at most 32 active devices. Signing in establishes the
 account context, enrolls the current installation through the existing device
 proof, prepares Vault access and exposes the module catalog. Adding a module
 records its desired state for that device and reports actual installation,
-permission and readiness separately. All clients use the same Core rules and
-Flutter presentation. OS-required bindings remain narrow I/O adapters.
+permission and readiness separately. All clients use the same Core rules.
+Presentation is Flutter on desktop/mobile and React/TypeScript on web, as
+amended by [ADR 0010](0010-react-browser-presentation.md).
+OS-required bindings remain narrow I/O adapters.
 
 There are six existing native tool adapters: Sysinfo, Clipboard, Cleaner,
 Updater, GDS and RDS. The distinct harness catalog contains eight names:
@@ -82,7 +84,7 @@ are qualified separately on desktop, Android, iOS and web. Unsupported OS
 capabilities remain explicit; they are not counted as working implementations.
 
 Use the existing Rust RDS transport and media boundary, Core authorization and
-frame lifetime rules, Accounts credentials and shared Flutter viewer. Platform
+frame lifetime rules, Accounts credentials and typed presentation viewers. Platform
 capture consent, revocation, expiry and local disable remain binding. This is
 view-only scope: no remote keyboard/pointer, shell or file-transfer expansion.
 
